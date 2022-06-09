@@ -14,8 +14,8 @@ class HowToUsefirstController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // 背景設定
         self.view.addBackgroundufirst(name: "useFirst")
-        
         let image = UIImage(named: "howToUseFirst.jpg")
         let imageView = UIImageView(frame: CGRect.init(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height))
         imageView.image = image
@@ -33,7 +33,6 @@ class HowToUsefirstController: UIViewController {
         // ナビゲーションを透明にする処理
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
-        
     }
     
     // 次へボタン押下時処理
@@ -51,19 +50,14 @@ extension UIView {
         // スクリーンサイズの取得
         let width = UIScreen.main.bounds.size.width
         let height = UIScreen.main.bounds.size.height
-        
         // スクリーンサイズにあわせてimageViewの配置
         let imageViewBackground = UIImageView(frame: CGRect(x: 0, y: 0, width: width, height: height))
-        
         //imageViewに背景画像を表示
         imageViewBackground.image = UIImage(named: name)
-        
         // 画像の表示モードを変更。
         imageViewBackground.contentMode = UIView.ContentMode.scaleAspectFill
-        
         // subviewをメインビューに追加
         self.addSubview(imageViewBackground)
-        
         // 加えたsubviewを、最背面に設置する
         self.sendSubviewToBack(imageViewBackground)
     }

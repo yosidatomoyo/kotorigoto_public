@@ -35,7 +35,6 @@ class QuestionThreadViewController: UIViewController , UITextViewDelegate{
     var blockId = ""
     var blockIdString: Array<String> = []
     
-    
     @IBOutlet weak var sendButton: UIButton!
     @IBOutlet weak var QuestionThreadView: UITableView!
     @IBOutlet weak var ThreadTextView: UITextView!
@@ -52,9 +51,7 @@ class QuestionThreadViewController: UIViewController , UITextViewDelegate{
         ThreadPostaddMessageToFirestore(text:text)
         ThreadTextView.text = ""
         sendButton.isEnabled = false
-        
     }
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -63,16 +60,13 @@ class QuestionThreadViewController: UIViewController , UITextViewDelegate{
         navigationItem.title = "回答"
         self.navigationController?.navigationBar.titleTextAttributes
             = [NSAttributedString.Key.foregroundColor: UIColor(red: 153/255, green: 51/255, blue: 0/255, alpha: 1.0)]
-        
         sendButton.isEnabled = false
         self.view.addBackground(name: "lightBackground")
         
         // ナビゲーションを透明にする処理
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
-        
         setupNotification()
-        
         ThreadTextView.text = placeholder
         self.ThreadTextView.delegate = self
         
@@ -104,7 +98,6 @@ class QuestionThreadViewController: UIViewController , UITextViewDelegate{
                     let post = TimeLine.init(dic: dic)
                     guard let hideID = post.blockedId else { return }
                     self.blockIdString.append(hideID)
-                    
                 case .modified, .removed:
                     print("nothing to do")
                 }
@@ -149,7 +142,6 @@ class QuestionThreadViewController: UIViewController , UITextViewDelegate{
         if !ThreadTextView.isFirstResponder {
             return
         }
-        
         if self.view.frame.origin.y == 0 {
             if let keyboardRect = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
                 self.view.frame.origin.y -= keyboardRect.height
@@ -162,7 +154,6 @@ class QuestionThreadViewController: UIViewController , UITextViewDelegate{
         if self.view.frame.origin.y != 0 {
             self.view.frame.origin.y = 0
         }
-        
         self.view.endEditing(true)
     }
     
@@ -177,14 +168,12 @@ class QuestionThreadViewController: UIViewController , UITextViewDelegate{
             name = "回答者"
         }
         let messageId = randomString(length: 20)
-        
         let docDataPost = [
             "uid": uid,
             "name":name,
             "message": text,
             "createdAt": Timestamp(),
             "messageId":messageId,
-            
         ] as [String : Any]
         Firestore.firestore().collection("Thread").document(QestionThreadDocId).collection("Thread").addDocument(data: docDataPost) { (err) in
         }
@@ -223,18 +212,13 @@ class QuestionThreadViewController: UIViewController , UITextViewDelegate{
                         let m2Date = m2.createdAt.dateValue()
                         return m1Date < m2Date
                     }
-                    
                     self.QuestionThreadView.reloadData()
-                    
                 case .modified, .removed:
                     print("nothing to do")
                 }
             })
-            
         }
-        
     }
-    
 }
 
 
@@ -273,13 +257,13 @@ extension QuestionThreadViewController: UITableViewDelegate, UITableViewDataSour
             // UIAlertControllerのスタイルがactionSheet
             let actionSheet = UIAlertController(title: "ブロック・通報", message: "", preferredStyle: UIAlertController.Style.actionSheet)
             
-            // ユーザーブロックボタンが押された時の処理をクロージャ実装する
+            // ユーザーブロックボタンが押された時の処理をクロージャ実装
             let action1 = UIAlertAction(title: "ユーザーブロック", style: UIAlertAction.Style.default, handler: {
                 (action: UIAlertAction!) in
                 // 確認メッセージ
                 alert()
             })
-            // 通報2ボタンが押された時の処理をクロージャ実装する
+            // 通報2ボタンが押された時の処理をクロージャ実装
             let action2 = UIAlertAction(title: "通報", style: UIAlertAction.Style.default, handler: {
                 (action: UIAlertAction!) in
                 // 確認メッセージ
@@ -288,17 +272,17 @@ extension QuestionThreadViewController: UITableViewDelegate, UITableViewDataSour
                 
             })
             
-            // 閉じるボタンが押された時の処理をクロージャ実装する
-            // UIAlertActionのスタイルがCancelなので赤く表示される
+            // 閉じるボタンが押された時の処理をクロージャ実装
+            // UIAlertActionのスタイルがCancelなので赤く表示
             let close = UIAlertAction(title: "閉じる", style: UIAlertAction.Style.destructive, handler: {
                 (action: UIAlertAction!) in
             })
             
-            //UIAlertControllerにタイトル1ボタンとタイトル2ボタンと閉じるボタンをActionを追加
+            //UIAlertControllerにブロックボタンと通報ボタンと閉じるボタンをActionを追加
             actionSheet.addAction(action1)
             actionSheet.addAction(action2)
             actionSheet.addAction(close)
-            // iPad の場合のみ、ActionSheetを表示するための必要な設定
+            // iPad の場合のみ、ActionSheetを表示
             if UIDevice.current.userInterfaceIdiom == .pad {
                 actionSheet.popoverPresentationController?.sourceView = self.view
                 let screenSize = UIScreen.main.bounds
@@ -306,16 +290,14 @@ extension QuestionThreadViewController: UITableViewDelegate, UITableViewDataSour
             }
             // 実際にAlertを表示する
             self.present(actionSheet, animated: true, completion: nil)
-            
         }
         
         func reportAlertGenerate(){
             //アラート生成
-            //UIAlertControllerのスタイルがalert
             let alert: UIAlertController = UIAlertController(title: "通報してもよろしいですか？", message:  "", preferredStyle:  UIAlertController.Style.alert)
             // 通報するボタンの処理
             let confirmAction: UIAlertAction = UIAlertAction(title: "通報する", style: UIAlertAction.Style.default, handler:{
-                // 通報するボタンが押された時の処理をクロージャ実装する
+                // 通報するボタンが押された時の処理をクロージャ実装
                 (action: UIAlertAction!) -> Void in
                 // 通報処理
                 RunAlert()
@@ -323,14 +305,13 @@ extension QuestionThreadViewController: UITableViewDelegate, UITableViewDataSour
             
             // キャンセルボタンの処理
             let cancelAction: UIAlertAction = UIAlertAction(title: "キャンセル", style: UIAlertAction.Style.cancel, handler:{
-                // キャンセルボタンが押された時の処理をクロージャ実装する
+                // キャンセルボタンが押された時の処理をクロージャ実装
                 (action: UIAlertAction!) -> Void in
             })
             
             // UIAlertControllerにキャンセルボタンと確定ボタンをActionを追加
             alert.addAction(cancelAction)
             alert.addAction(confirmAction)
-            
             // 実際にAlertを表示する
             present(alert, animated: true, completion: nil)
         }
@@ -375,14 +356,11 @@ extension QuestionThreadViewController: UITableViewDelegate, UITableViewDataSour
                     "uid":uid
                 ]
                 Firestore.firestore().collection("users").document(uid).collection("blockId").document(blockId).setData(blockIdData){ (err) in
-                    
                 }
-                
                 let alert = UIAlertController(title: "ブロックしました", message: "", preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "OK", style: .default))
                 self.present(alert, animated: true, completion: nil)
             }
-            
         }
         
         func Report(){
@@ -411,11 +389,8 @@ extension QuestionThreadViewController: UITableViewDelegate, UITableViewDataSour
                 alert.addAction(UIAlertAction(title: "OK", style: .default))
                 self.present(alert, animated: true, completion: nil)
             }
-            
         }
-        
     }
-    
 }
 
 
@@ -424,15 +399,12 @@ class QuestionThreadViewCell: UITableViewCell {
         didSet {
             if let message = message {
                 nameLabel.text = message.name
-                
                 latestQestionMessage.text = message.message
                 QuestionTimeLabel.text = dateFormatterForDateLabel(date: message.createdAt.dateValue())
                 
             }
         }
     }
-    
-    
     
     @IBOutlet weak var latestQestionMessage: UILabel!
     @IBOutlet weak var QuestionTimeLabel: UILabel!
@@ -447,7 +419,6 @@ class QuestionThreadViewCell: UITableViewCell {
     }
     
     private func dateFormatterForDateLabel(date: Date) -> String {
-        
         let formatter = DateFormatter()
         formatter.timeStyle = .short
         formatter.locale = Locale(identifier: "ja_JP")
@@ -467,10 +438,8 @@ extension UIView {
         let imageViewBackground = UIImageView(frame: CGRect(x: 0, y: 0, width: width, height: height))
         // imageViewに背景画像を表示
         imageViewBackground.image = UIImage(named: name)
-        
         // 画像の表示モードを変更。
         imageViewBackground.contentMode = UIView.ContentMode.scaleAspectFill
-        
         // subviewをメインビューに追加
         self.addSubview(imageViewBackground)
         // 加えたsubviewを、最背面に設置する

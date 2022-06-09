@@ -65,10 +65,9 @@ class TimeLineViewController: UIViewController {
     }
     @IBOutlet weak var TimeLineTableView: UITableView!
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.addBackground(name: "1111")
+        self.view.addBackground(name: "lightBackground")
         TimeLineTableView.delegate = self
         TimeLineTableView.dataSource = self
         
@@ -105,14 +104,10 @@ class TimeLineViewController: UIViewController {
         
     }
     
+    // ブロックユーザー情報取得
     func block(){
         guard let uid = Auth.auth().currentUser?.uid else { return }
         Firestore.firestore().collection("users").document(uid).collection("blockId").addSnapshotListener { ( snapshots, err) in
-            
-            if let err = err {
-                print("メッセージ情報の取得に失敗しました。\(err)")
-                return
-            }
             snapshots?.documentChanges.forEach({ (documentChange) in
                 switch documentChange.type {
                 case .added:
@@ -144,10 +139,6 @@ class TimeLineViewController: UIViewController {
         TimeLineTableView.reloadData()
         // マイタイムライン情報取得
         Firestore.firestore().collection("users").document(uid).collection("MyTimeLine").addSnapshotListener { ( snapshots, err) in
-            if let err = err {
-                print("メッセージ情報の取得に失敗しました。\(err)")
-                return
-            }
             HUD.hide()
             snapshots?.documentChanges.forEach({ (documentChange) in
                 switch documentChange.type {
@@ -179,10 +170,6 @@ class TimeLineViewController: UIViewController {
         TimeLineTableView.reloadData()
         // 仕事タイムライン情報取得
         Firestore.firestore().collection("WorkTimeLine").getDocuments { ( snapshots, err) in
-            if let err = err {
-                print("post情報の取得に失敗しました。\(err)")
-                return
-            }
             HUD.hide()
             let judgeBlock = self.blockIdString.reduce("") { $0 + String($1) }
             snapshots?.documents.forEach({ (snapshot) in
@@ -202,7 +189,6 @@ class TimeLineViewController: UIViewController {
                     
                 }else{
                     if judgeBlock.contains(hideID) {
-                        
                     }else{
                         self.genle.append(post)
                         // 昇順に並び替え
@@ -214,13 +200,10 @@ class TimeLineViewController: UIViewController {
                         }
                         self.TimeLineTableView.reloadData()
                     }
-                    
                 }
                 
             })
         }
-        
-        
     }
     
     // 恋愛タイムライン表示処理
@@ -230,12 +213,7 @@ class TimeLineViewController: UIViewController {
         TimeLineTableView.reloadData()
         // 恋愛タイムライン情報取得
         Firestore.firestore().collection("loveTimeLine").getDocuments {( snapshots, err) in
-            if let err = err {
-                print("post情報の取得に失敗しました。\(err)")
-                return
-            }
             HUD.hide()
-            
             let judgeBlock = self.blockIdString.reduce("") { $0 + String($1) }
             snapshots?.documents.forEach({ (snapshot) in
                 let dic = snapshot.data()
@@ -249,10 +227,8 @@ class TimeLineViewController: UIViewController {
                         let m1Date = m1.createdAt.dateValue()
                         let m2Date = m2.createdAt.dateValue()
                         return m1Date > m2Date
-                        
                     }
                     self.TimeLineTableView.reloadData()
-                    
                 }else{
                     if judgeBlock.contains(hideID) {
                         
@@ -263,17 +239,12 @@ class TimeLineViewController: UIViewController {
                             let m1Date = m1.createdAt.dateValue()
                             let m2Date = m2.createdAt.dateValue()
                             return m1Date > m2Date
-                            
                         }
                         self.TimeLineTableView.reloadData()
                     }
-                    
                 }
-                
             })
         }
-        
-        
     }
     
     // その他タイムライン表示処理
@@ -283,10 +254,6 @@ class TimeLineViewController: UIViewController {
         TimeLineTableView.reloadData()
         // その他タイムライン情報取得
         Firestore.firestore().collection("OtherTimeline").getDocuments { ( snapshots, err) in
-            if let err = err {
-                print("post情報の取得に失敗しました。\(err)")
-                return
-            }
             HUD.hide()
             let judgeBlock = self.blockIdString.reduce("") { $0 + String($1) }
             snapshots?.documents.forEach({ (snapshot) in
@@ -301,34 +268,23 @@ class TimeLineViewController: UIViewController {
                         let m1Date = m1.createdAt.dateValue()
                         let m2Date = m2.createdAt.dateValue()
                         return m1Date > m2Date
-                        
                     }
                     self.TimeLineTableView.reloadData()
-                    
                 }else{
                     if judgeBlock.contains(hideID) {
-                        
                     }else{
                         self.genle.append(post)
                         self.genle.sort { (m1, m2) -> Bool in
                             let m1Date = m1.createdAt.dateValue()
                             let m2Date = m2.createdAt.dateValue()
                             return m1Date > m2Date
-                            
                         }
                         self.TimeLineTableView.reloadData()
                     }
-                    
                 }
-                
             })
         }
-        
-        
     }
-    
-    
-    
 }
 
 // MARK: - UITableViewDelegate, UITableViewDataSource
@@ -342,7 +298,6 @@ extension TimeLineViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return genle.count
     }
-    
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = TimeLineTableView.dequeueReusableCell(withIdentifier: TimeLinecellId, for: indexPath) as! TimeLineTableViewCell
@@ -360,40 +315,37 @@ extension TimeLineViewController: UITableViewDelegate, UITableViewDataSource {
         // ブロック通報処理
         func alertGenerate(){
             // アラート生成
-            // UIAlertControllerのスタイルがactionSheet
             let actionSheet = UIAlertController(title: "通報・ブロック", message: "", preferredStyle: UIAlertController.Style.actionSheet)
             
-            // ブロックボタンが押された時の処理をクロージャ実装する
+            // ブロックボタンが押された時の処理をクロージャ実装
             let action1 = UIAlertAction(title: "ユーザーブロック", style: UIAlertAction.Style.default, handler: {
                 (action: UIAlertAction!) in
                 // 実際の処理
                 alert()
             })
-            // 通報ボタンが押された時の処理をクロージャ実装する
+            // 通報ボタンが押された時の処理をクロージャ実装
             let action2 = UIAlertAction(title: "通報", style: UIAlertAction.Style.default, handler: {
                 (action: UIAlertAction!) in
                 // 実際の処理
                 Report()
             })
             
-            // 閉じるボタンが押された時の処理をクロージャ実装する
-            // UIAlertActionのスタイルがCancelなので赤く表示される
+            // 閉じるボタンが押された時の処理をクロージャ実装
+            // UIAlertActionのスタイルがCancelなので赤く表示
             let close = UIAlertAction(title: "閉じる", style: UIAlertAction.Style.destructive, handler: {
                 (action: UIAlertAction!) in
-                // 実際の処理
-                print("閉じる")
             })
             
             actionSheet.addAction(action1)
             actionSheet.addAction(action2)
             actionSheet.addAction(close)
-            // iPad の場合のみ、ActionSheetを表示するための必要な設定
+            // iPad の場合のみ、ActionSheetを表示
             if UIDevice.current.userInterfaceIdiom == .pad {
                 actionSheet.popoverPresentationController?.sourceView = self.view
                 let screenSize = UIScreen.main.bounds
                 actionSheet.popoverPresentationController?.sourceRect = CGRect(x: screenSize.size.width / 2, y: screenSize.size.height,width: 0,height: 0)
             }
-            // 実際にAlertを表示する
+            // 実際にAlertを表示
             self.present(actionSheet, animated: true, completion: nil)
             
         }
@@ -408,7 +360,7 @@ extension TimeLineViewController: UITableViewDelegate, UITableViewDataSource {
             let alert: UIAlertController = UIAlertController(title: "ブロックしてもよろしいですか？", message:"", preferredStyle:  UIAlertController.Style.alert)
             // 確定ボタンの処理
             let confirmAction: UIAlertAction = UIAlertAction(title: "ブロックする", style: UIAlertAction.Style.default, handler:{
-                // 確定ボタンが押された時の処理をクロージャ実装する
+                // 確定ボタンが押された時の処理をクロージャ実装
                 (action: UIAlertAction!) -> Void in
                 //実際の処理
                 blocked()
@@ -416,10 +368,8 @@ extension TimeLineViewController: UITableViewDelegate, UITableViewDataSource {
             })
             // キャンセルボタンの処理
             let cancelAction: UIAlertAction = UIAlertAction(title: "キャンセル", style: UIAlertAction.Style.cancel, handler:{
-                // キャンセルボタンが押された時の処理をクロージャ実装する
+                // キャンセルボタンが押された時の処理をクロージャ実装
                 (action: UIAlertAction!) -> Void in
-                // 実際の処理
-                print("キャンセル")
             })
             
             //UIAlertControllerにキャンセルボタンと確定ボタンをActionを追加
@@ -436,12 +386,10 @@ extension TimeLineViewController: UITableViewDelegate, UITableViewDataSource {
             // アラート生成
             // UIAlertControllerのスタイルがalert
             let alert: UIAlertController = UIAlertController(title: "通報してもよろしいですか？", message:  "", preferredStyle:  UIAlertController.Style.alert)
-            // 確定ボタンの処理
+            // 通報するボタンの処理
             let confirmAction: UIAlertAction = UIAlertAction(title: "通報する", style: UIAlertAction.Style.default, handler:{
                 // 確定ボタンが押された時の処理をクロージャ実装する
                 (action: UIAlertAction!) -> Void in
-                // 実際の処理
-                print("確定")
                 RunAlert()
                 
                 
@@ -450,8 +398,6 @@ extension TimeLineViewController: UITableViewDelegate, UITableViewDataSource {
             let cancelAction: UIAlertAction = UIAlertAction(title: "キャンセル", style: UIAlertAction.Style.cancel, handler:{
                 // キャンセルボタンが押された時の処理をクロージャ実装する
                 (action: UIAlertAction!) -> Void in
-                //実際の処理
-                print("キャンセル")
             })
             
             //UIAlertControllerにキャンセルボタンと確定ボタンをActionを追加
@@ -478,10 +424,8 @@ extension TimeLineViewController: UITableViewDelegate, UITableViewDataSource {
                 ]
                 Firestore.firestore().collection("users").document(uid).collection("blockId").document(blockId).setData(blockIdData){ (err) in
                     if let err = err {
-                        print("最新メッセージの保存に失敗しました。\(err)")
                         return
                     }
-                    print("メッセージの保存に成功しました。")
                     self.fetchTimeLineLove()
                     self.fetchTimeLineWork()
                     self.fetchTimeLineOther()
@@ -522,10 +466,8 @@ extension TimeLineViewController: UITableViewDelegate, UITableViewDataSource {
                 ] as [String : Any]
                 Firestore.firestore().collection("Report").document(alertId).setData(alertData){ (err) in
                     if let err = err {
-                        print("最新メッセージの保存に失敗しました。\(err)")
                         return
                     }
-                    print("メッセージの保存に成功しました。")
                 }
                 
                 let alert = UIAlertController(title: "通報しました", message: "", preferredStyle: .alert)
@@ -583,10 +525,8 @@ extension UIView {
         let imageViewBackground = UIImageView(frame: CGRect(x: 0, y: 0, width: width, height: height))
         // imageViewに背景画像を表示
         imageViewBackground.image = UIImage(named: name)
-        
         // 画像の表示モードを変更。
         imageViewBackground.contentMode = UIView.ContentMode.scaleAspectFill
-        
         // subviewをメインビューに追加
         self.addSubview(imageViewBackground)
         // 加えたsubviewを、最背面に設置する

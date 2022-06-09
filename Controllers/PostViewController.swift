@@ -163,13 +163,12 @@ class PostViewController: UIViewController, UITextViewDelegate {
         let existingLines = textView.text.components(separatedBy: .newlines)
         // 新規改行数
         let newLines = text.components(separatedBy: .newlines)
-        // 最終改行数。-1は編集したら必ず1改行としてカウントされる
+        // 最終改行数。-1は編集したら必ず1改行としてカウント
         let linesAfterChange = existingLines.count + newLines.count - 1
-        
         return linesAfterChange <= 7 && PostTextView.text.count + (text.count - range.length) <= textLength
     }
     
-    // TextViewの内容が変わるたびに実行される
+    // TextViewの内容が変わるたびに実行
     func textViewDidChange(_ textView: UITextView) {
         // 既に存在する改行数
         let existingLines = textView.text.components(separatedBy: .newlines)
@@ -217,14 +216,13 @@ class PostViewController: UIViewController, UITextViewDelegate {
     @objc private func PtappedHomeButton() {
         self.dismiss(animated: true, completion: nil)
     }
-    // キーボードを閉じる処理。
+    // キーボード非表示
     @objc func dismissKeyboard() {
         PostTextView.resignFirstResponder()
     }
     
     // 投稿種類フラグ判定
     private func CheckaddPostToFirestore(text: String){
-        print(TimeLineflag)
         if ( TimeLineflag == true ) {
             guard let text = PostTextView.text else { return }
             addPostTimeLineFirestore(text:text)
@@ -313,19 +311,10 @@ class PostViewController: UIViewController, UITextViewDelegate {
         ] as [String : Any]
         
         Firestore.firestore().collection("loveTimeLine").document(MessageId).setData(docDataPost){ (err) in
-            if let err = err {
-                print("投稿情報の保存に失敗しました。\(err)")
-                return
-            }
             self.transitionTimeLine()
         }
         
         Firestore.firestore().collection("users").document(uid).collection("MyTimeLine").document(MessageId).setData(docDataPost){ (err) in
-            if let err = err {
-                print("投稿情報の保存に失敗しました。\(err)")
-                return
-            }
-            
         }
     }
     //　その他タイムライン投稿処理
@@ -341,7 +330,6 @@ class PostViewController: UIViewController, UITextViewDelegate {
             "MessageId": MessageId,
             "blockedId": "",
             "genle":"OtherTimeline"
-            
         ] as [String : Any]
         
         Firestore.firestore().collection("OtherTimeline").document(MessageId).setData(docDataPost){ (err) in
@@ -378,7 +366,6 @@ class PostViewController: UIViewController, UITextViewDelegate {
             "MessageId": MessageId,
             "blockedId": "",
             "genle":"WorkQusetion"
-            
         ] as [String : Any]
         
         Firestore.firestore().collection("WorkQusetion").document(MessageId).setData(docDataPost){ (err) in
@@ -407,7 +394,6 @@ class PostViewController: UIViewController, UITextViewDelegate {
             "MessageId": MessageId,
             "blockedId": "",
             "genle":"loveQusetion"
-            
         ] as [String : Any]
         
         Firestore.firestore().collection("loveQusetion").document(MessageId).setData(docDataPost){ (err) in
@@ -435,7 +421,6 @@ class PostViewController: UIViewController, UITextViewDelegate {
             "MessageId": MessageId,
             "blockedId": "",
             "genle":"OtherQusetion"
-            
         ] as [String : Any]
         
         Firestore.firestore().collection("OtherQusetion").document(MessageId).setData(docDataPost){ (err) in
@@ -458,7 +443,6 @@ class PostViewController: UIViewController, UITextViewDelegate {
             "message": text,
             "createdAt": Timestamp(),
             "messageId": MessageId
-            
         ] as [String : Any]
         
         Firestore.firestore().collection("users").document(uid).collection("MyTimeLine").document(MessageId).setData(docDataPost){ (err) in
@@ -491,10 +475,8 @@ extension UIView {
         let imageViewBackground = UIImageView(frame: CGRect(x: 0, y: 0, width: width, height: height))
         //imageViewに背景画像を表示
         imageViewBackground.image = UIImage(named: name)
-        
         // 画像の表示モードを変更。
         imageViewBackground.contentMode = UIView.ContentMode.scaleAspectFill
-        
         // subviewをメインビューに追加
         self.addSubview(imageViewBackground)
         // 加えたsubviewを、最背面に設置する

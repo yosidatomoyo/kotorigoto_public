@@ -31,10 +31,8 @@ class TermsOfUseViewController: UIViewController {
     // 同意するボタン押下時処理
     private func setupViews() {
         let agreeButton = UIBarButtonItem(title: "同意する", style: .plain, target: self, action: #selector(tappedagreeButton))
-        
         navigationItem.rightBarButtonItem = agreeButton
         navigationItem.rightBarButtonItem?.tintColor = UIColor(red: 210/255, green: 105/255, blue: 30/255, alpha: 1.0)
-        
     }
     
     @objc private func tappedagreeButton() {
@@ -44,11 +42,10 @@ class TermsOfUseViewController: UIViewController {
     // 確認アラート表示
     private func conform(){
         //アラート生成
-        //UIAlertControllerのスタイルがalert
         let alert: UIAlertController = UIAlertController(title: "年齢は18歳以上ですか？", message:  "", preferredStyle:  UIAlertController.Style.alert)
         // 確定ボタンの処理
         let confirmAction: UIAlertAction = UIAlertAction(title: "はい", style: UIAlertAction.Style.default, handler:{
-            // 確定ボタンが押された時の処理をクロージャ実装する
+            // 確定ボタンが押された時の処理をクロージャ実装
             (action: UIAlertAction!) -> Void in
             //実際の処理
             let storyboar = UIStoryboard(name: "HowToUse1", bundle: nil)
@@ -60,7 +57,7 @@ class TermsOfUseViewController: UIViewController {
         })
         // キャンセルボタンの処理
         let cancelAction: UIAlertAction = UIAlertAction(title: "いいえ", style: UIAlertAction.Style.cancel, handler:{
-            // キャンセルボタンが押された時の処理をクロージャ実装する
+            // キャンセルボタンが押された時の処理をクロージャ実装
             (action: UIAlertAction!) -> Void in
         })
         
@@ -80,7 +77,6 @@ extension TermsOfUseViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        
         TermsOfUseTableView.estimatedRowHeight = 120
         return UITableView.automaticDimension
     }
@@ -91,11 +87,9 @@ extension TermsOfUseViewController: UITableViewDelegate, UITableViewDataSource {
 }
 
 class TermsOfUseViewControllerCell: UITableViewCell {
-    
     @IBOutlet weak var TermsOfUseLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
-        
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {

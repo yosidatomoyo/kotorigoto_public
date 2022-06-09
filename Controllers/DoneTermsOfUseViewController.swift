@@ -25,7 +25,6 @@ class DoneTermsOfUseViewController: UIViewController {
         navigationItem.title = "利用規約"
         self.navigationController?.navigationBar.titleTextAttributes
             = [NSAttributedString.Key.foregroundColor: UIColor(red: 210/255, green: 105/255, blue: 30/255, alpha: 1.0)]
-        
     }
     
     // 同意するボタン押下時処理
@@ -33,7 +32,6 @@ class DoneTermsOfUseViewController: UIViewController {
         let agreeButton = UIBarButtonItem(title: "同意する", style: .plain, target: self, action: #selector(tappedagreeButton))
         navigationItem.rightBarButtonItem = agreeButton
         navigationItem.rightBarButtonItem?.tintColor = UIColor(red: 210/255, green: 105/255, blue: 30/255, alpha: 1.0)
-        
     }
     
     // 同意するボタン押下時

@@ -58,13 +58,13 @@ class QuestionViewController: UIViewController {
         
         QuestionView.delegate = self
         QuestionView.dataSource = self
+        
         //　タイトル設定
         navigationItem.title = "質問箱"
         self.navigationController?.navigationBar.titleTextAttributes
             = [NSAttributedString.Key.foregroundColor: UIColor(red: 153/255, green: 51/255, blue: 0/255, alpha: 1.0)]
         // 背景設定
         self.view.addBackground(name: "lightBackground")
-        
         // ナビゲーションを透明にする処理
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
@@ -134,10 +134,6 @@ class QuestionViewController: UIViewController {
         genle.removeAll()
         QuestionView.reloadData()
         Firestore.firestore().collection("WorkQusetion").getDocuments { ( snapshots, err) in
-            if let err = err {
-                print("post情報の取得に失敗しました。\(err)")
-                return
-            }
             HUD.hide()
             // ブッロクユーザー投稿を非表示
             let judgeBlock = self.blockIdString.reduce("") { $0 + String($1) }
@@ -152,13 +148,11 @@ class QuestionViewController: UIViewController {
                         let m1Date = m1.createdAt.dateValue()
                         let m2Date = m2.createdAt.dateValue()
                         return m1Date > m2Date
-                        
                     }
                     self.QuestionView.reloadData()
                     
                 }else{
                     if judgeBlock.contains(hideID) {
-                        
                     }else{
                         self.genle.append(post)
                         self.genle.sort { (m1, m2) -> Bool in
@@ -168,9 +162,7 @@ class QuestionViewController: UIViewController {
                         }
                         self.QuestionView.reloadData()
                     }
-                    
                 }
-                
             })
         }
     }
@@ -181,10 +173,6 @@ class QuestionViewController: UIViewController {
         genle.removeAll()
         QuestionView.reloadData()
         Firestore.firestore().collection("loveQusetion").getDocuments { ( snapshots, err) in
-            if let err = err {
-                print("post情報の取得に失敗しました。\(err)")
-                return
-            }
             HUD.hide()
             // ブロックユーザー判定
             let judgeBlock = self.blockIdString.reduce("") { $0 + String($1) }
@@ -199,13 +187,10 @@ class QuestionViewController: UIViewController {
                         let m1Date = m1.createdAt.dateValue()
                         let m2Date = m2.createdAt.dateValue()
                         return m1Date > m2Date
-                        
                     }
                     self.QuestionView.reloadData()
-                    
                 }else{
                     if judgeBlock.contains(hideID) {
-                        
                     }else{
                         self.genle.append(post)
                         self.genle.sort { (m1, m2) -> Bool in
@@ -216,9 +201,7 @@ class QuestionViewController: UIViewController {
                         }
                         self.QuestionView.reloadData()
                     }
-                    
                 }
-                
             })
         }
         
@@ -230,10 +213,6 @@ class QuestionViewController: UIViewController {
         genle.removeAll()
         QuestionView.reloadData()
         Firestore.firestore().collection("OtherQusetion").getDocuments { ( snapshots, err) in
-            if let err = err {
-                print("post情報の取得に失敗しました。\(err)")
-                return
-            }
             HUD.hide()
             // ブッロクユーザー判定
             let judgeBlock = self.blockIdString.reduce("") { $0 + String($1) }
@@ -248,30 +227,22 @@ class QuestionViewController: UIViewController {
                         let m1Date = m1.createdAt.dateValue()
                         let m2Date = m2.createdAt.dateValue()
                         return m1Date > m2Date
-                        
                     }
                     self.QuestionView.reloadData()
-                    
                 }else{
                     if judgeBlock.contains(hideID) {
-                        
                     }else{
                         self.genle.append(post)
                         self.genle.sort { (m1, m2) -> Bool in
                             let m1Date = m1.createdAt.dateValue()
                             let m2Date = m2.createdAt.dateValue()
                             return m1Date > m2Date
-                            
                         }
                         self.QuestionView.reloadData()
                     }
-                    
                 }
-                
             })
         }
-        
-        
     }
     
     // 自身質問投稿処理
@@ -281,11 +252,6 @@ class QuestionViewController: UIViewController {
         genle.removeAll()
         QuestionView.reloadData()
         Firestore.firestore().collection("users").document(uid).collection("MyQusetion").addSnapshotListener { ( snapshots, err) in
-            
-            if let err = err {
-                print("メッセージ情報の取得に失敗しました。\(err)")
-                return
-            }
             HUD.hide()
             let judgeBlock = self.blockIdString.reduce("") { $0 + String($1) }
             snapshots?.documents.forEach({ (snapshot) in
@@ -293,37 +259,28 @@ class QuestionViewController: UIViewController {
                 let post = TimeLine.init(dic: dic)
                 guard let hideID = post.uid else { return }
                 
-                
                 if(self.blockIdString.count == 0){
                     self.genle.append(post)
                     self.genle.sort { (m1, m2) -> Bool in
                         let m1Date = m1.createdAt.dateValue()
                         let m2Date = m2.createdAt.dateValue()
                         return m1Date > m2Date
-                        
                     }
                     self.QuestionView.reloadData()
-                    
                 }else{
                     if judgeBlock.contains(hideID) {
-                        
                     }else{
                         self.genle.append(post)
                         self.genle.sort { (m1, m2) -> Bool in
                             let m1Date = m1.createdAt.dateValue()
                             let m2Date = m2.createdAt.dateValue()
                             return m1Date > m2Date
-                            
                         }
                         self.QuestionView.reloadData()
                     }
-                    
                 }
-                
             })
         }
-        
-        
     }
 }
 
@@ -332,7 +289,6 @@ class QuestionViewController: UIViewController {
 extension QuestionViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        
         QuestionView.estimatedRowHeight = 80
         return UITableView.automaticDimension
     }
@@ -341,6 +297,7 @@ extension QuestionViewController: UITableViewDelegate, UITableViewDataSource {
         return genle.count
         
     }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = QuestionView.dequeueReusableCell(withIdentifier: QuestionTimeLinecellId, for: indexPath) as! QuestionTimeLinecell
         cell.Genle = genle[indexPath.row]
@@ -354,7 +311,6 @@ extension QuestionViewController: UITableViewDelegate, UITableViewDataSource {
         tableView.deselectRow(at:indexPath,animated: true)
         QuestionThreadViewController.Genle = genle[indexPath.row]
         navigationController?.pushViewController(QuestionThreadViewController, animated: true)
-        
     }
 }
 
@@ -362,7 +318,6 @@ class QuestionTimeLinecell: UITableViewCell {
     var Genle: TimeLine? {
         didSet {
             if let Posts = Genle {
-                
                 QuestionTimeLabel.text = dateFormatterForDateLabel(date: Posts.createdAt.dateValue())
                 QuestionMessage.text = Posts.message
             }
@@ -384,7 +339,6 @@ class QuestionTimeLinecell: UITableViewCell {
         
         let formatter = DateFormatter()
         formatter.timeStyle = .short
-        
         formatter.locale = Locale(identifier: "ja_JP")
         return formatter.string(from: date)
     }
@@ -402,10 +356,8 @@ extension UIView {
         let imageViewBackground = UIImageView(frame: CGRect(x: 0, y: 0, width: width, height: height))
         // imageViewに背景画像を表示
         imageViewBackground.image = UIImage(named: name)
-        
         // 画像の表示モードを変更。
         imageViewBackground.contentMode = UIView.ContentMode.scaleAspectFill
-        
         // subviewをメインビューに追加
         self.addSubview(imageViewBackground)
         // 加えたsubviewを、最背面に設置する

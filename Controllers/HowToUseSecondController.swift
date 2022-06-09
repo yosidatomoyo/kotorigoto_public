@@ -21,21 +21,19 @@ class HowToUseSecondController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        // 背景設定
         self.view.addBackgroundSecond(name: "useFirst")
-        
         let image = UIImage(named: "howToUseSecond.jpg")
         let imageView = UIImageView(frame: CGRect.init(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height))
         imageView.image = image
         self.HowToUseSecondTableView.backgroundView = imageView
         
-        
-        let rigth4HomeButton = UIBarButtonItem(title: "開始する", style: .plain, target: self, action: #selector(tappedStartButton))
-        navigationItem.rightBarButtonItem = rigth4HomeButton
+        let rigthHomeButton = UIBarButtonItem(title: "開始する", style: .plain, target: self, action: #selector(tappedStartButton))
+        navigationItem.rightBarButtonItem = rigthHomeButton
         navigationItem.rightBarButtonItem?.tintColor = .brown
         let backButton = UIBarButtonItem(title: "戻る", style: .plain, target: self, action: #selector(tappedbackButton))
         navigationItem.leftBarButtonItem = backButton
         navigationItem.leftBarButtonItem?.tintColor = .brown
-        
         navigationItem.title = "使い方"
         navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.brown]
         
@@ -47,7 +45,6 @@ class HowToUseSecondController: UIViewController {
     
     @objc private func tappedStartButton() {
         createUserToFirestore()
-        
     }
     
     @objc private func tappedbackButton() {
@@ -56,7 +53,6 @@ class HowToUseSecondController: UIViewController {
         let nav = UINavigationController(rootViewController: HowToUsefirstController)
         nav.modalPresentationStyle = .fullScreen
         self.present(nav, animated: true, completion: nil)
-        
     }
     
     // ユーザー情報登録処理
@@ -68,7 +64,6 @@ class HowToUseSecondController: UIViewController {
                 "createdAt": Timestamp(),
                 "displayName":"ことり",
                 "uid": uid
-                
             ] as [String : Any]
             Firestore.firestore().collection("users").document(uid).setData(docData) { (err) in
                 HUD.hide()
@@ -78,12 +73,11 @@ class HowToUseSecondController: UIViewController {
                 let nav = UINavigationController(rootViewController: HomeTableViewController)
                 nav.modalPresentationStyle = .fullScreen
                 self.present(nav, animated: true, completion: nil)
-                
             }
         }
     }
-    
 }
+
 extension UIView {
     func addBackgroundSecond(name: String) {
         // スクリーンサイズの取得
@@ -94,13 +88,10 @@ extension UIView {
         let imageViewBackground = UIImageView(frame: CGRect(x: 0, y: 0, width: width, height: height))
         //imageViewに背景画像を表示
         imageViewBackground.image = UIImage(named: name)
-        
         // 画像の表示モードを変更。
         imageViewBackground.contentMode = UIView.ContentMode.scaleAspectFill
-        
         // subviewをメインビューに追加
         self.addSubview(imageViewBackground)
-        
         // 加えたsubviewを、最背面に設置する
         self.sendSubviewToBack(imageViewBackground)
     }

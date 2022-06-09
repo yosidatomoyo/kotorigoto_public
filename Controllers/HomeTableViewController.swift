@@ -59,10 +59,8 @@ class HomeTableViewController: UIViewController ,UITabBarDelegate{
     // 初期起動時実行
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         // 背景設定
         self.view.addBackground(name: "home")
-        
         // ユーザー情報が存在しない場合登録画面へ遷移（利用規約）
         navigationController?.setNavigationBarHidden(true, animated: false)
         if Auth.auth().currentUser?.uid == nil {
@@ -78,7 +76,6 @@ class HomeTableViewController: UIViewController ,UITabBarDelegate{
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         fetchedefoltMessage()
-        
     }
     
     // 小鳥の一言ボタン押下時
@@ -89,8 +86,7 @@ class HomeTableViewController: UIViewController ,UITabBarDelegate{
     // その他のボタン押下時処理関数
     private func otherButton(){
         let actionSheet = UIAlertController(title: "その他", message: "", preferredStyle: UIAlertController.Style.actionSheet)
-        
-        // 使い方押下時
+        // 使い方ボタン押下時
         let actionHowToUse = UIAlertAction(title: "使い方", style: UIAlertAction.Style.default, handler: {
             (action: UIAlertAction!) in
             let storyboar = UIStoryboard(name: "DoneLoginHowToUseFirst", bundle: nil)
@@ -106,13 +102,11 @@ class HomeTableViewController: UIViewController ,UITabBarDelegate{
             // Twitterに遷移
             let url = NSURL(string: "https://mobile.twitter.com/yoshidatwitt")
             UIApplication.shared.open(url! as URL, options: [:], completionHandler: nil)
-            
         })
         
         // 利用規約押下時
         let actionTermsOfUse = UIAlertAction(title: "利用規約", style: UIAlertAction.Style.default, handler: {
             (action: UIAlertAction!) in
-            
             let storyboar = UIStoryboard(name: "DoneTermsOfUse", bundle: nil)
             let DoneTermsOfUseViewController = storyboar.instantiateViewController(withIdentifier: "DoneTermsOfUseViewController") as! DoneTermsOfUseViewController
             let nav = UINavigationController(rootViewController: DoneTermsOfUseViewController)
@@ -149,15 +143,12 @@ class HomeTableViewController: UIViewController ,UITabBarDelegate{
                 // キャンセルボタンが押された時の処理をクロージャ実装する
                 (action: UIAlertAction!) -> Void in
             })
-            
             //UIAlertControllerにキャンセルボタンと確定ボタンをActionを追加
             alert.addAction(cancelAction)
             alert.addAction(confirmAction)
             
             //実際にAlertを表示する
             self.present(alert, animated: true, completion: nil)
-            
-            
         })
         
         // 閉じるボタンが押された時の処理をクロージャ実装する
@@ -165,7 +156,6 @@ class HomeTableViewController: UIViewController ,UITabBarDelegate{
         let close = UIAlertAction(title: "閉じる", style: UIAlertAction.Style.destructive, handler: {
             (action: UIAlertAction!) in
             //実際の処理
-            print("閉じる")
         })
         
         //UIAlertControllerにタイトル1ボタンとタイトル2ボタンと閉じるボタンをActionを追加
@@ -193,7 +183,7 @@ class HomeTableViewController: UIViewController ,UITabBarDelegate{
         formatter.dateStyle = .none
         formatter.locale = NSLocale.system
         let realTime = formatter.string(from: Date())
-        print("realtime",realTime)
+        
         
         if("05:01" <= realTime && realTime <= "09:59" ){
             let Message: [String] =  ["おはようございます。\nあなたにとって素敵な1日になりますように。","今日はあなたに良いことが起こりそうな気がします"]
@@ -207,22 +197,18 @@ class HomeTableViewController: UIViewController ,UITabBarDelegate{
             }
             
         }else if("17:01" <= realTime && realTime <= "21:00"){
-            
             let Message: [String] = ["今日も1日お疲れ様です。\nゆっくり休んでくださいね。","1日お疲れ様です。\n今日どんな良いことがありましたか？"]
-            
             if let randomMessage = Message.randomElement() {
                 messageLabel.text = randomMessage
             }
         }else if("21:01" <= realTime && realTime <= "23:59"){
             let Message: [String] = ["明日が良い日でありますように。","1日お疲れ様です。\nあなたの存在が大きな力になっていますよ","今日も1日お疲れ様です。\nおやすみなさい。","今日も1日お疲れ様です。\n今日どんな良いことがありましたか？"]
-            
             if let randomMessage = Message.randomElement() {
                 messageLabel.text = randomMessage
             }
             
         }else if("00:00" <= realTime && realTime <= "05:00"){
             let Message: [String] = ["1日お疲れ様です。\nおやすみなさい。","1日お疲れ様です。\nあなたの存在が大きな力になっていますよ"]
-            
             if let randomMessage = Message.randomElement() {
                 messageLabel.text = randomMessage
             }
@@ -258,10 +244,8 @@ extension UIView {
         let imageViewBackground = UIImageView(frame: CGRect(x: 0, y: 0, width: width, height: height))
         //imageViewに背景画像を表示
         imageViewBackground.image = UIImage(named: name)
-        
         // 画像の表示モードを変更。
         imageViewBackground.contentMode = UIView.ContentMode.scaleAspectFill
-        
         // subviewをメインビューに追加
         self.addSubview(imageViewBackground)
         // 加えたsubviewを、最背面に設置する
