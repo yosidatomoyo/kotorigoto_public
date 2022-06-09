@@ -15,14 +15,14 @@ import PKHUD
 import Nuke
 import SnapKit
 
-class HowToUse4Controller: UIViewController {
+class HowToUseSecondController: UIViewController {
     
     @IBOutlet weak var HowToUseSecondTableView: UITableView!
- 
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.addBackgroundSecond(name: "useFirst")
-
+        
         let image = UIImage(named: "howToUseSecond.jpg")
         let imageView = UIImageView(frame: CGRect.init(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height))
         imageView.image = image
@@ -40,15 +40,15 @@ class HowToUse4Controller: UIViewController {
         navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.brown]
         
         // ナビゲーションを透明にする処理
-       self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
-       self.navigationController?.navigationBar.shadowImage = UIImage()
-
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        
     }
-
-@objc private func tappedStartButton() {
-    createUserToFirestore()
-
-}
+    
+    @objc private func tappedStartButton() {
+        createUserToFirestore()
+        
+    }
     
     @objc private func tappedbackButton() {
         let storyboar = UIStoryboard(name: "HowToUse1", bundle: nil)
@@ -56,14 +56,14 @@ class HowToUse4Controller: UIViewController {
         let nav = UINavigationController(rootViewController: HowToUsefirstController)
         nav.modalPresentationStyle = .fullScreen
         self.present(nav, animated: true, completion: nil)
-
+        
     }
     
     // ユーザー情報登録処理
     private func createUserToFirestore() {
         Auth.auth().signInAnonymously() { authResult, error in
             guard let uid = authResult?.user.uid else { return }
-
+            
             let docData = [
                 "createdAt": Timestamp(),
                 "displayName":"ことり",
@@ -82,7 +82,7 @@ class HowToUse4Controller: UIViewController {
             }
         }
     }
-      
+    
 }
 extension UIView {
     func addBackgroundSecond(name: String) {
@@ -100,6 +100,7 @@ extension UIView {
         
         // subviewをメインビューに追加
         self.addSubview(imageViewBackground)
+        
         // 加えたsubviewを、最背面に設置する
         self.sendSubviewToBack(imageViewBackground)
     }

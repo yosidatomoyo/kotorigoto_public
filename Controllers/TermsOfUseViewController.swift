@@ -15,15 +15,15 @@ class TermsOfUseViewController: UIViewController {
     
     private let TermsOfUseViewControllerId = "TermsOfUseViewControllerId"
     @IBOutlet weak var TermsOfUseTableView: UITableView!
-        
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-    
+        
         setupViews()
         TermsOfUseTableView.delegate = self
         TermsOfUseTableView.dataSource = self
         navigationItem.title = "利用規約"
-
+        
         self.navigationController?.navigationBar.titleTextAttributes
             = [NSAttributedString.Key.foregroundColor: UIColor(red: 210/255, green: 105/255, blue: 30/255, alpha: 1.0)]
     }
@@ -38,10 +38,10 @@ class TermsOfUseViewController: UIViewController {
     }
     
     @objc private func tappedagreeButton() {
-     conform()
+        conform()
     }
     
-    
+    // 確認アラート表示
     private func conform(){
         //アラート生成
         //UIAlertControllerのスタイルがalert
@@ -56,20 +56,20 @@ class TermsOfUseViewController: UIViewController {
             let nav = UINavigationController(rootViewController: HowToUsefirstController)
             nav.modalPresentationStyle = .fullScreen
             self.present(nav, animated: true, completion: nil)
-                 
+            
         })
         // キャンセルボタンの処理
         let cancelAction: UIAlertAction = UIAlertAction(title: "いいえ", style: UIAlertAction.Style.cancel, handler:{
             // キャンセルボタンが押された時の処理をクロージャ実装する
             (action: UIAlertAction!) -> Void in
         })
-
-        //UIAlertControllerにキャンセルボタンと確定ボタンをActionを追加
+        
+        // UIAlertControllerにキャンセルボタンと確定ボタンをActionを追加
         alert.addAction(cancelAction)
         alert.addAction(confirmAction)
-        //実際にAlertを表示する
+        // 実際にAlertを表示する
         present(alert, animated: true, completion: nil)
-
+        
     }
     
 }

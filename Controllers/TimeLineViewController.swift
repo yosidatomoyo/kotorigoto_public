@@ -17,7 +17,7 @@ class TimeLineViewController: UIViewController {
     
     private let TimeLinecellId = "TimeLinecellId"
     private var timeLineListner: ListenerRegistration?
-
+    
     var Genle: TimeLine?
     var genle = [TimeLine]()
     var user : User?
@@ -540,7 +540,7 @@ extension TimeLineViewController: UITableViewDelegate, UITableViewDataSource {
 
 
 class TimeLineTableViewCell: UITableViewCell {
-
+    
     var Posts: TimeLine? {
         didSet {
             if let Posts = Posts {
@@ -551,7 +551,7 @@ class TimeLineTableViewCell: UITableViewCell {
         }
     }
     
-
+    
     @IBOutlet weak var TimeLineLatestMessage: UILabel!
     @IBOutlet weak var timelabel: UILabel!
     

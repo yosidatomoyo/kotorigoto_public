@@ -21,7 +21,7 @@ class DoneLoginHowToUseSecondController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.addBackgroundSeconds(name: "useFirst")
-
+        
         let image = UIImage(named: "howToUseSecond.jpg")
         let imageView = UIImageView(frame: CGRect.init(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height))
         imageView.image = image
@@ -36,23 +36,23 @@ class DoneLoginHowToUseSecondController: UIViewController {
         navigationItem.leftBarButtonItem?.tintColor = .brown
         
         // ナビゲーションを透明にする処理
-       self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
-       self.navigationController?.navigationBar.shadowImage = UIImage()
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
         navigationItem.title = "使い方"
         navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.brown]
-
+        
     }
-
+    
     // 開始するボタン押下時処理
     @objc private func tappedStartButton() {
-      self.presentingViewController?.presentingViewController?.dismiss(animated: true, completion: nil)
+        self.presentingViewController?.presentingViewController?.dismiss(animated: true, completion: nil)
     }
-
+    
     // 戻るボタン押下時処理
     @objc private func tappedbackButton() {
         self.dismiss(animated: true, completion: nil)
     }
-        
+    
 }
 
 extension UIView {
@@ -77,5 +77,5 @@ extension UIView {
     }
 }
 
-  
+
 

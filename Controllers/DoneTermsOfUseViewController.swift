@@ -14,11 +14,11 @@ import SnapKit
 class DoneTermsOfUseViewController: UIViewController {
     
     private let DoneTermsOfUseViewControllerId = "DoneTermsOfUseViewControllerId"
-        @IBOutlet weak var DoneTermsOfUseTableView: UITableView!
+    @IBOutlet weak var DoneTermsOfUseTableView: UITableView!
     
-        override func viewDidLoad() {
+    override func viewDidLoad() {
         super.viewDidLoad()
-    
+        
         setupViews()
         DoneTermsOfUseTableView.delegate = self
         DoneTermsOfUseTableView.dataSource = self
@@ -39,8 +39,8 @@ class DoneTermsOfUseViewController: UIViewController {
     // 同意するボタン押下時
     @objc private func tappedagreeButton() {
         self.dismiss(animated: true, completion: nil)
-     }
     }
+}
 
 
 extension DoneTermsOfUseViewController: UITableViewDelegate, UITableViewDataSource {
@@ -50,8 +50,8 @@ extension DoneTermsOfUseViewController: UITableViewDelegate, UITableViewDataSour
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-    DoneTermsOfUseTableView.estimatedRowHeight = 120
-    return UITableView.automaticDimension
+        DoneTermsOfUseTableView.estimatedRowHeight = 120
+        return UITableView.automaticDimension
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

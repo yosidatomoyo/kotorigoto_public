@@ -19,7 +19,7 @@ class QuestionThreadViewController: UIViewController , UITextViewDelegate{
     private var QuestionThreaListner: ListenerRegistration?
     private let tableViewContentInset: UIEdgeInsets = .init(top: 60, left: 0, bottom: 0, right: 0)
     private let tableViewIndicatorInset: UIEdgeInsets = .init(top: 60, left: 0, bottom: 0, right: 0)
-
+    
     var user: User?
     var Genle: TimeLine?
     var genle = [TimeLine]()
@@ -39,7 +39,7 @@ class QuestionThreadViewController: UIViewController , UITextViewDelegate{
     @IBOutlet weak var sendButton: UIButton!
     @IBOutlet weak var QuestionThreadView: UITableView!
     @IBOutlet weak var ThreadTextView: UITextView!
-
+    
     // 解答エリアが空の場合はボタン非活性
     @IBAction func SendButton(_ sender: UIButton) {
         ThreadTextView.text = ""
@@ -52,21 +52,21 @@ class QuestionThreadViewController: UIViewController , UITextViewDelegate{
         ThreadPostaddMessageToFirestore(text:text)
         ThreadTextView.text = ""
         sendButton.isEnabled = false
-
+        
     }
     
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         QuestionThreadView.delegate = self
         QuestionThreadView.dataSource = self
         navigationItem.title = "回答"
         self.navigationController?.navigationBar.titleTextAttributes
-               = [NSAttributedString.Key.foregroundColor: UIColor(red: 153/255, green: 51/255, blue: 0/255, alpha: 1.0)]
+            = [NSAttributedString.Key.foregroundColor: UIColor(red: 153/255, green: 51/255, blue: 0/255, alpha: 1.0)]
         
         sendButton.isEnabled = false
         self.view.addBackground(name: "lightBackground")
-
+        
         // ナビゲーションを透明にする処理
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
@@ -91,7 +91,7 @@ class QuestionThreadViewController: UIViewController , UITextViewDelegate{
         fetchQuestionine()
         HUD.show(.progress)
         block()
-        }
+    }
     
     // ブロックユーザー情報取得
     func block(){
@@ -113,7 +113,7 @@ class QuestionThreadViewController: UIViewController , UITextViewDelegate{
         }
         
     }
-
+    
     // 文字数制限＆行数制限
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         // 既に存在する改行数
@@ -124,53 +124,53 @@ class QuestionThreadViewController: UIViewController , UITextViewDelegate{
         let linesAfterChange = existingLines.count + newLines.count - 1
         return linesAfterChange <= 7 && ThreadTextView.text.count + (text.count - range.length) <= textLength
     }
-
+    
     // TextViewの内容が変わるたびに実行される
     func textViewDidChange(_ textView: UITextView) {
         if ThreadTextView.text == "" {
             sendButton.isEnabled = false
-           } else {
+        } else {
             sendButton.isEnabled = true
-           }
         }
+    }
     
     private func setupNotification() {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
         
         let tapGR: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(keyboardWillHide))
-                tapGR.cancelsTouchesInView = false
-                self.view.addGestureRecognizer(tapGR)
-            
+        tapGR.cancelsTouchesInView = false
+        self.view.addGestureRecognizer(tapGR)
+        
     }
-
+    
     // キーボード表示処理
     @objc func keyboardWillShow(notification: NSNotification) {
         if !ThreadTextView.isFirstResponder {
-                  return
+            return
         }
-          
-      if self.view.frame.origin.y == 0 {
-          if let keyboardRect = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
-              self.view.frame.origin.y -= keyboardRect.height
-          }
-      }
+        
+        if self.view.frame.origin.y == 0 {
+            if let keyboardRect = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+                self.view.frame.origin.y -= keyboardRect.height
+            }
+        }
     }
     
     // キーボード非表示処理
     @objc func keyboardWillHide() {
         if self.view.frame.origin.y != 0 {
-                   self.view.frame.origin.y = 0
+            self.view.frame.origin.y = 0
         }
-           
+        
         self.view.endEditing(true)
     }
- 
+    
     // 解答情報をデータベースに保存
     private func ThreadPostaddMessageToFirestore(text: String) {
         guard let uid = Auth.auth().currentUser?.uid else { return }
         guard let QestionThreadDocId = Genle?.ThreadRoomId else { return }
-
+        
         if (uid == Genle?.uid){
             name = "質問者"
         }else {
@@ -206,7 +206,7 @@ class QuestionThreadViewController: UIViewController , UITextViewDelegate{
     // 質問情報取得
     private func fetchQuestionine(){
         guard let QestionThreadDocId = Genle?.ThreadRoomId else { return }
-
+        
         QuestionThreaListner?.remove()
         messages.removeAll()
         QuestionThreadView.reloadData()
@@ -234,7 +234,7 @@ class QuestionThreadViewController: UIViewController , UITextViewDelegate{
         }
         
     }
-            
+    
 }
 
 
@@ -248,7 +248,7 @@ extension QuestionThreadViewController: UITableViewDelegate, UITableViewDataSour
         return UITableView.automaticDimension
     }
     
-  
+    
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         messages.count
@@ -334,7 +334,7 @@ extension QuestionThreadViewController: UITableViewDelegate, UITableViewDataSour
             // 実際にAlertを表示する
             present(alert, animated: true, completion: nil)
         }
-
+        
         // ブロック処理
         func alert(){
             // アラート生成
@@ -375,7 +375,7 @@ extension QuestionThreadViewController: UITableViewDelegate, UITableViewDataSour
                     "uid":uid
                 ]
                 Firestore.firestore().collection("users").document(uid).collection("blockId").document(blockId).setData(blockIdData){ (err) in
-            
+                    
                 }
                 
                 let alert = UIAlertController(title: "ブロックしました", message: "", preferredStyle: .alert)
@@ -398,14 +398,14 @@ extension QuestionThreadViewController: UITableViewDelegate, UITableViewDataSour
                 self.present(alert, animated: true, completion: nil)
             }else{
                 let alertId = randomString(length: 20)
-
+                
                 let alertData = [
                     "alertId": blockId,
                     "ReporterID":uid,
                     "createdAt": Timestamp()
                 ] as [String : Any]
                 Firestore.firestore().collection("Report").document(alertId).setData(alertData){ (err) in
-        
+                    
                 }
                 let alert = UIAlertController(title: "通報しました", message: "", preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "OK", style: .default))
@@ -424,20 +424,20 @@ class QuestionThreadViewCell: UITableViewCell {
         didSet {
             if let message = message {
                 nameLabel.text = message.name
-
+                
                 latestQestionMessage.text = message.message
                 QuestionTimeLabel.text = dateFormatterForDateLabel(date: message.createdAt.dateValue())
-
+                
             }
         }
     }
-
- 
+    
+    
     
     @IBOutlet weak var latestQestionMessage: UILabel!
     @IBOutlet weak var QuestionTimeLabel: UILabel!
     @IBOutlet weak var nameLabel: UILabel!
-
+    
     override func awakeFromNib() {
         super.awakeFromNib()
     }
@@ -453,7 +453,7 @@ class QuestionThreadViewCell: UITableViewCell {
         formatter.locale = Locale(identifier: "ja_JP")
         return formatter.string(from: date)
     }
-
+    
 }
 
 

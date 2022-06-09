@@ -15,7 +15,7 @@ class DoneLoginHowToUseFirstController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.addBackgrounds(name: "useFirst")
-
+        
         let image = UIImage(named: "howToUseFirst.jpg")
         let imageView = UIImageView(frame: CGRect.init(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height))
         imageView.image = image
@@ -28,16 +28,16 @@ class DoneLoginHowToUseFirstController: UIViewController {
         navigationItem.title = "使い方"
         navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.brown]
         
-       // ナビゲーションを透明にする処理
-       self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
-       self.navigationController?.navigationBar.shadowImage = UIImage()
+        // ナビゲーションを透明にする処理
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
         
     }
     // 次へボタン押下時処理
     @objc private func tappedNextButton() {
-        let storyboar = UIStoryboard(name: "DoneLoginHowToUseSecond", bundle: nil)
-        let DoneLoginHowToUseSecond = storyboar.instantiateViewController(withIdentifier: "DoneLoginHowToUseSecond") as! DoneLoginHowToUseSecond
-         let nav = UINavigationController(rootViewController: DoneLoginHowToUseSecond)
+        let storyboar = UIStoryboard(name: "DoneLoginHowToUseSecondController", bundle: nil)
+        let DoneLoginHowToUseSecondController = storyboar.instantiateViewController(withIdentifier: "DoneLoginHowToUseSecondController") as! DoneLoginHowToUseSecondController
+        let nav = UINavigationController(rootViewController: DoneLoginHowToUseSecondController)
         nav.modalPresentationStyle = .fullScreen
         self.present(nav,animated: true, completion: nil)
     }

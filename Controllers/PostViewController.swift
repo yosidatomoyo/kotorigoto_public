@@ -17,7 +17,7 @@ class PostViewController: UIViewController, UITextViewDelegate {
     
     private var genle = [TimeLine]()
     private var user = [User]()
-
+    
     var TimeLineflag: Bool = false
     var Questionflag: Bool = false
     var loveflag: Bool = false
@@ -28,35 +28,35 @@ class PostViewController: UIViewController, UITextViewDelegate {
     var sendButtonFlag = true
     private let placeholder = ""
     private let textLength = 150
-
+    
     @IBOutlet weak var PostTextView: UITextView!
     @IBOutlet weak var sendButton: UIButton!
     @IBOutlet weak var wordCountLabel: UILabel!
     @IBAction func tappedSendButton(_ sender: Any) {
         
-    sendButton.isEnabled = false
-    
-    // 投稿テキストエリアから判定
-    if (PostTextView.text == "") {
         sendButton.isEnabled = false
-    } else {
-        sendButton.isEnabled = true
+        
+        // 投稿テキストエリアから判定
+        if (PostTextView.text == "") {
+            sendButton.isEnabled = false
+        } else {
+            sendButton.isEnabled = true
+        }
+        
+        sendButtonFlag = false
+        HUD.show(.progress, onView: view)
+        
+        // 二重送信防止
+        if (sendButtonFlag != true) {
+            sendButton.isEnabled = false
+        }
+        
+        guard let text = PostTextView.text else { return }
+        CheckaddPostToFirestore(text:text)
+        
     }
     
-    sendButtonFlag = false
-    HUD.show(.progress, onView: view)
-        
-    // 二重送信防止
-    if (sendButtonFlag != true) {
-        sendButton.isEnabled = false
-    }
-        
-    guard let text = PostTextView.text else { return }
-    CheckaddPostToFirestore(text:text)
-        
-    }
     
-  
     // タイムライン、質問判定
     @IBAction func SelctionButton(_ sender: UISegmentedControl) {
         switch sender.selectedSegmentIndex {
@@ -64,12 +64,12 @@ class PostViewController: UIViewController, UITextViewDelegate {
             TimeLineflag = true
             Questionflag = false
             privateflag = false
-
+            
         case 1:
             Questionflag = true
             TimeLineflag = false
             privateflag = false
-
+            
         case 2:
             privateflag = true
             TimeLineflag = false
@@ -78,7 +78,7 @@ class PostViewController: UIViewController, UITextViewDelegate {
         default:
             TimeLineflag = false
             Questionflag = false
-
+            
         }
     }
     
@@ -135,11 +135,11 @@ class PostViewController: UIViewController, UITextViewDelegate {
         
         navigationItem.title = "投稿"
         self.navigationController?.navigationBar.titleTextAttributes
-               = [NSAttributedString.Key.foregroundColor: UIColor(red: 153/255, green: 51/255, blue: 0/255, alpha: 1.0)]
+            = [NSAttributedString.Key.foregroundColor: UIColor(red: 153/255, green: 51/255, blue: 0/255, alpha: 1.0)]
         // ナビゲーションを透明にする処理
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
-       
+        
         let leftHomeButton = UIBarButtonItem(title: "ホーム", style: .plain, target: self, action: #selector(PtappedHomeButton))
         navigationItem.leftBarButtonItem = leftHomeButton
         navigationItem.leftBarButtonItem?.tintColor = .brown
@@ -156,7 +156,7 @@ class PostViewController: UIViewController, UITextViewDelegate {
     @objc func keyboardWillHide1() {
         self.view.endEditing(true)
     }
-  
+    
     // 文字数制限＆行数制限
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         // 既に存在する改行数
@@ -165,10 +165,10 @@ class PostViewController: UIViewController, UITextViewDelegate {
         let newLines = text.components(separatedBy: .newlines)
         // 最終改行数。-1は編集したら必ず1改行としてカウントされる
         let linesAfterChange = existingLines.count + newLines.count - 1
-
+        
         return linesAfterChange <= 7 && PostTextView.text.count + (text.count - range.length) <= textLength
     }
-
+    
     // TextViewの内容が変わるたびに実行される
     func textViewDidChange(_ textView: UITextView) {
         // 既に存在する改行数
@@ -178,12 +178,12 @@ class PostViewController: UIViewController, UITextViewDelegate {
             
             if PostTextView.text == "" {
                 sendButton.isEnabled = false
-               } else {
+            } else {
                 sendButton.isEnabled = true
-               }
+            }
         }
     }
-
+    
     // 入力開始時にプレースホルダーの内容が入っていたら空にする
     func textViewDidBeginEditing(_ textView: UITextView) {
         if textView.text == placeholder {
@@ -191,7 +191,7 @@ class PostViewController: UIViewController, UITextViewDelegate {
             textView.textColor = .darkText
         }
     }
-
+    
     // 入力終了後に文字が入力されていなかったらプレースホルダー表示
     func textViewDidEndEditing(_ textView: UITextView) {
         if textView.text.isEmpty {
@@ -199,7 +199,7 @@ class PostViewController: UIViewController, UITextViewDelegate {
             textView.textColor = .darkGray
         }
     }
-
+    
     func setupTextView() {
         // キーボードの上に置くツールバーの生成
         let toolBar = UIToolbar()
@@ -287,7 +287,7 @@ class PostViewController: UIViewController, UITextViewDelegate {
             "MessageId":  MessageId,
             "blockedId": "",
             "genle":"WorkTimeLine"
-
+            
         ] as [String : Any]
         
         Firestore.firestore().collection("WorkTimeLine").document(MessageId).setData(docDataPost){ (err) in
@@ -295,7 +295,7 @@ class PostViewController: UIViewController, UITextViewDelegate {
         }
         
         Firestore.firestore().collection("users").document(uid).collection("MyTimeLine").document(MessageId).setData(docDataPost){ (err) in
-
+            
         }
     }
     
@@ -311,7 +311,7 @@ class PostViewController: UIViewController, UITextViewDelegate {
             "blockedId": "",
             "genle":"loveTimeLine"
         ] as [String : Any]
-
+        
         Firestore.firestore().collection("loveTimeLine").document(MessageId).setData(docDataPost){ (err) in
             if let err = err {
                 print("投稿情報の保存に失敗しました。\(err)")
@@ -319,13 +319,13 @@ class PostViewController: UIViewController, UITextViewDelegate {
             }
             self.transitionTimeLine()
         }
-
+        
         Firestore.firestore().collection("users").document(uid).collection("MyTimeLine").document(MessageId).setData(docDataPost){ (err) in
             if let err = err {
                 print("投稿情報の保存に失敗しました。\(err)")
                 return
             }
-           
+            
         }
     }
     //　その他タイムライン投稿処理
@@ -341,7 +341,7 @@ class PostViewController: UIViewController, UITextViewDelegate {
             "MessageId": MessageId,
             "blockedId": "",
             "genle":"OtherTimeline"
-
+            
         ] as [String : Any]
         
         Firestore.firestore().collection("OtherTimeline").document(MessageId).setData(docDataPost){ (err) in
@@ -354,7 +354,7 @@ class PostViewController: UIViewController, UITextViewDelegate {
     
     //　質問ジャンル判定
     private func addPostQuestionFirestore(text: String){
-       if ( workflag ) {
+        if ( workflag ) {
             workQusetionaddPost(text:text)
         }
         else if ( loveflag ){
@@ -378,7 +378,7 @@ class PostViewController: UIViewController, UITextViewDelegate {
             "MessageId": MessageId,
             "blockedId": "",
             "genle":"WorkQusetion"
-
+            
         ] as [String : Any]
         
         Firestore.firestore().collection("WorkQusetion").document(MessageId).setData(docDataPost){ (err) in
@@ -397,7 +397,7 @@ class PostViewController: UIViewController, UITextViewDelegate {
         guard let uid = Auth.auth().currentUser?.uid else { return }
         let MessageId = randomString(length: 20)
         let ThreadRoomId = randomString(length: 20)
-
+        
         let docDataPost = [
             "uid": uid,
             "message": text,
@@ -407,7 +407,7 @@ class PostViewController: UIViewController, UITextViewDelegate {
             "MessageId": MessageId,
             "blockedId": "",
             "genle":"loveQusetion"
-
+            
         ] as [String : Any]
         
         Firestore.firestore().collection("loveQusetion").document(MessageId).setData(docDataPost){ (err) in
@@ -444,7 +444,7 @@ class PostViewController: UIViewController, UITextViewDelegate {
         Firestore.firestore().collection("users").document(uid).collection("MyQusetion").document(MessageId).setData(docDataPost){ (err) in
         }
         Firestore.firestore().collection("Thread").document(ThreadRoomId).collection("Thread").addDocument(data: docDataPost) { (err) in
-
+            
         }
     }
     
@@ -458,7 +458,7 @@ class PostViewController: UIViewController, UITextViewDelegate {
             "message": text,
             "createdAt": Timestamp(),
             "messageId": MessageId
-
+            
         ] as [String : Any]
         
         Firestore.firestore().collection("users").document(uid).collection("MyTimeLine").document(MessageId).setData(docDataPost){ (err) in
@@ -486,15 +486,15 @@ extension UIView {
         // スクリーンサイズの取得
         let width = UIScreen.main.bounds.size.width
         let height = UIScreen.main.bounds.size.height
-
+        
         // スクリーンサイズにあわせてimageViewの配置
         let imageViewBackground = UIImageView(frame: CGRect(x: 0, y: 0, width: width, height: height))
         //imageViewに背景画像を表示
         imageViewBackground.image = UIImage(named: name)
-
+        
         // 画像の表示モードを変更。
         imageViewBackground.contentMode = UIView.ContentMode.scaleAspectFill
-
+        
         // subviewをメインビューに追加
         self.addSubview(imageViewBackground)
         // 加えたsubviewを、最背面に設置する
