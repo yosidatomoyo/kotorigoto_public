@@ -15,7 +15,7 @@ import PKHUD
 import Nuke
 import SnapKit
 
-class DoneLoginHowToUseSecond: UIViewController {
+class DoneLoginHowToUseSecondController: UIViewController {
     
     @IBOutlet weak var tableViewSecond: UITableView!
     override func viewDidLoad() {
