@@ -1,22 +1,20 @@
 //
-//  DoneLoginHowToUse1.swift
+//  DoneLoginHowTos.swift
 //  ChatAppWithFirebase
 //
 //  Created by 吉田知代 on 2021/05/23.
 //  Copyright © 2021 吉田　知代. All rights reserved.
 //
 
-
-
 import UIKit
 
-class DoneLoginHowToUseFirst: UIViewController {
-
+class DoneLoginHowToUseFirstController: UIViewController {
+    
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.addBackgrounduse1(name: "useFirst")
+        self.view.addBackgrounds(name: "useFirst")
 
         let image = UIImage(named: "howToUseFirst.jpg")
         let imageView = UIImageView(frame: CGRect.init(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height))
@@ -50,7 +48,7 @@ class DoneLoginHowToUseFirst: UIViewController {
 
 
 extension UIView {
-    func addBackgrounduse1(name: String) {
+    func addBackgrounds(name: String) {
         // スクリーンサイズの取得
         let width = UIScreen.main.bounds.size.width
         let height = UIScreen.main.bounds.size.height

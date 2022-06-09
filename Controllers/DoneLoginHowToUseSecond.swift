@@ -16,8 +16,8 @@ import Nuke
 import SnapKit
 
 class DoneLoginHowToUseSecond: UIViewController {
-    @IBOutlet weak var tableView2: UITableView!
     
+    @IBOutlet weak var tableViewSecond: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.addBackgroundSeconds(name: "useFirst")
@@ -25,7 +25,7 @@ class DoneLoginHowToUseSecond: UIViewController {
         let image = UIImage(named: "howToUseSecond.jpg")
         let imageView = UIImageView(frame: CGRect.init(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height))
         imageView.image = image
-        self.tableView2.backgroundView = imageView
+        self.tableViewSecond.backgroundView = imageView
         
         let rigth4HomeButton = UIBarButtonItem(title: "開始する", style: .plain, target: self, action: #selector(tappedStartButton))
         navigationItem.rightBarButtonItem = rigth4HomeButton
@@ -43,16 +43,16 @@ class DoneLoginHowToUseSecond: UIViewController {
 
     }
 
-    
-@objc private func tappedStartButton() {
-  self.presentingViewController?.presentingViewController?.dismiss(animated: true, completion: nil)
+    // 開始するボタン押下時処理
+    @objc private func tappedStartButton() {
+      self.presentingViewController?.presentingViewController?.dismiss(animated: true, completion: nil)
     }
 
+    // 戻るボタン押下時処理
     @objc private func tappedbackButton() {
         self.dismiss(animated: true, completion: nil)
-
     }
-    
+        
 }
 
 extension UIView {
@@ -71,6 +71,7 @@ extension UIView {
         
         // subviewをメインビューに追加
         self.addSubview(imageViewBackground)
+        
         // 加えたsubviewを、最背面に設置する
         self.sendSubviewToBack(imageViewBackground)
     }

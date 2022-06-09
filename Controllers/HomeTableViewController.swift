@@ -94,8 +94,8 @@ class HomeTableViewController: UIViewController ,UITabBarDelegate{
         let actionHowToUse = UIAlertAction(title: "使い方", style: UIAlertAction.Style.default, handler: {
             (action: UIAlertAction!) in
             let storyboar = UIStoryboard(name: "DoneLoginHowToUseFirst", bundle: nil)
-            let DoneLoginHowToUseFirst = storyboar.instantiateViewController(withIdentifier: "DoneLoginHowToUseFirst") as! DoneLoginHowToUseFirst
-            let nav = UINavigationController(rootViewController: DoneLoginHowToUseFirst)
+            let DoneLoginHowToUseFirstController = storyboar.instantiateViewController(withIdentifier: "DoneLoginHowToUseFirst") as! DoneLoginHowToUseFirstController
+            let nav = UINavigationController(rootViewController: DoneLoginHowToUseFirstController)
             nav.modalPresentationStyle = .fullScreen
             self.present(nav, animated: true, completion: nil)
         })
