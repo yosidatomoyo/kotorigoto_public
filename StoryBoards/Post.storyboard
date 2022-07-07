@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="zb5-Aj-lLf">
+            <objects>
+                <navigationController id="lVA-hz-kSi" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="LWw-aC-jfK">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="Xe1-aN-Ka5" kind="relationship" relationship="rootViewController" id="xV1-g9-3Lz"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="duF-fR-htF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1780" y="-142"/>
+        </scene>
+        <!--Post View Controller-->
+        <scene sceneID="WU0-tj-X5Q">
+            <objects>
+                <viewController storyboardIdentifier="PostViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Xe1-aN-Ka5" customClass="PostViewController" customModule="ChatAppWithFirebase" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5fn-eS-4aT" customClass="PostViewControllercellId" customModule="ChatAppWithFirebase">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" translatesAutoresizingMaskIntoConstraints="NO" id="nYH-Pc-V1x">
+                                <rect key="frame" x="59" y="190" width="296" height="32"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <segments>
+                                    <segment title="タイムライン"/>
+                                    <segment title="質問箱"/>
+                                    <segment title="非公開"/>
+                                </segments>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="selectedSegmentTintColor" red="0.67272704139999995" green="1" blue="0.74646976350000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <connections>
+                                    <action selector="SelctionButton:" destination="Xe1-aN-Ka5" eventType="valueChanged" id="rSu-bC-UXb"/>
+                                </connections>
+                            </segmentedControl>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="qFv-b5-5Sm">
+                                <rect key="frame" x="51" y="241" width="312" height="128"/>
+                                <color key="backgroundColor" red="0.82978998974683238" green="1" blue="0.85082345170290363" alpha="0.84705882352941175" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="128" id="15t-f8-3i2"/>
+                                    <constraint firstAttribute="width" constant="312" id="Luf-Wb-u6h"/>
+                                </constraints>
+                                <color key="textColor" systemColor="labelColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" translatesAutoresizingMaskIntoConstraints="NO" id="ziK-fj-WeT">
+                                <rect key="frame" x="119" y="139" width="176" height="32"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <segments>
+                                    <segment title="恋愛"/>
+                                    <segment title="仕事"/>
+                                    <segment title="その他"/>
+                                </segments>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="selectedSegmentTintColor" red="0.67272704139999995" green="1" blue="0.74646976350000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <connections>
+                                    <action selector="SelectionGenleButton:" destination="Xe1-aN-Ka5" eventType="valueChanged" id="Gpy-e0-ZpW"/>
+                                </connections>
+                            </segmentedControl>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="150" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Lq-UP-j9H">
+                                <rect key="frame" x="256" y="103" width="28" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="残り文字数" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZNe-0d-WVm">
+                                <rect key="frame" x="100" y="103" width="87" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i7a-Ky-Vdy">
+                                <rect key="frame" x="162" y="384" width="90" height="39"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <state key="normal" title="　投稿　"/>
+                                <connections>
+                                    <action selector="tappedSendButton:" destination="Xe1-aN-Ka5" eventType="touchUpInside" id="whC-HZ-jRe"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="esK-ho-dFP"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="qFv-b5-5Sm" firstAttribute="centerX" secondItem="5fn-eS-4aT" secondAttribute="centerX" id="BZH-sA-QQ7"/>
+                            <constraint firstItem="i7a-Ky-Vdy" firstAttribute="top" secondItem="qFv-b5-5Sm" secondAttribute="bottom" constant="15" id="FHi-iT-fSf"/>
+                            <constraint firstItem="nYH-Pc-V1x" firstAttribute="top" secondItem="ziK-fj-WeT" secondAttribute="bottom" constant="20" id="ITu-Pt-ndt"/>
+                            <constraint firstItem="i7a-Ky-Vdy" firstAttribute="centerX" secondItem="5fn-eS-4aT" secondAttribute="centerX" id="KDj-Ty-sg6"/>
+                            <constraint firstItem="nYH-Pc-V1x" firstAttribute="centerX" secondItem="5fn-eS-4aT" secondAttribute="centerX" id="Kyj-io-Ldz"/>
+                            <constraint firstItem="esK-ho-dFP" firstAttribute="trailing" secondItem="5Lq-UP-j9H" secondAttribute="trailing" constant="130" id="SlP-FB-89Y"/>
+                            <constraint firstItem="qFv-b5-5Sm" firstAttribute="top" secondItem="nYH-Pc-V1x" secondAttribute="bottom" constant="20" id="g5x-U9-LUh"/>
+                            <constraint firstItem="5Lq-UP-j9H" firstAttribute="top" secondItem="esK-ho-dFP" secondAttribute="top" constant="15" id="hRo-hT-P84"/>
+                            <constraint firstItem="ZNe-0d-WVm" firstAttribute="leading" secondItem="esK-ho-dFP" secondAttribute="leading" constant="100" id="hfN-Ze-GsW"/>
+                            <constraint firstItem="ziK-fj-WeT" firstAttribute="top" secondItem="5Lq-UP-j9H" secondAttribute="bottom" constant="15" id="kg2-Mp-Pwd"/>
+                            <constraint firstItem="ZNe-0d-WVm" firstAttribute="top" secondItem="esK-ho-dFP" secondAttribute="top" constant="15" id="mq2-uX-ZgV"/>
+                            <constraint firstItem="ziK-fj-WeT" firstAttribute="centerX" secondItem="5fn-eS-4aT" secondAttribute="centerX" id="z0y-aY-wJx"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="gBJ-s2-hrZ"/>
+                    <connections>
+                        <outlet property="PostTextView" destination="qFv-b5-5Sm" id="86p-e6-7uX"/>
+                        <outlet property="sendButton" destination="i7a-Ky-Vdy" id="ILD-7P-Zfm"/>
+                        <outlet property="wordCountLabel" destination="5Lq-UP-j9H" id="wsw-1c-wNx"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="IHF-5C-Idd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-991.304347826087" y="-115.17857142857142"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

@@ -1,0 +1,303 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="oJa-mP-zFz">
+            <objects>
+                <navigationController id="IZN-ok-xcw" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="1aL-pN-4HQ">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="cTR-6r-P6b" kind="relationship" relationship="rootViewController" id="0Sl-7A-Nk4"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MTo-22-3xW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-445" y="117"/>
+        </scene>
+        <!--Terms Of Use View Controller-->
+        <scene sceneID="kT4-xi-WwZ">
+            <objects>
+                <viewController storyboardIdentifier="TermsOfUseViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="cTR-6r-P6b" customClass="TermsOfUseViewController" customModule="ChatAppWithFirebase" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="kRO-dU-hgg">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="3nA-LA-4EA">
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="TermsOfUseViewControllerCell" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="TermsOfUseViewControllerId" rowHeight="80" id="Vgc-Dh-cW7" customClass="TermsOfUseViewControllerCell" customModule="ChatAppWithFirebase" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="24.5" width="414" height="80"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Vgc-Dh-cW7" id="cFA-SJ-6y7">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="80"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ILy-rb-6dD">
+                                                    <rect key="frame" x="25" y="16" width="379" height="59"/>
+                                                    <mutableString key="text" base64-UTF8="YES">
+ICDjgZPjga7liKnnlKjopo/ntITvvIjku6XkuIvvvIzjgIzmnKzopo/ntITjgI3jgajjgYTjgYTjgb7j
+gZnjgILvvInjga/vvIzlsI/ps6XoqIDpgYvllrbkuovli5nlsYDvvIjku6XkuIvvvIzjgIzlvZPkuovl
+i5nlsYDjgI3jgajjgYTjgYTjgb7jgZnjgILvvInjgYzjgZPjga7jgqbjgqfjg5bjgrXjgqTjg4jkuIrj
+gafmj5DkvpvjgZnjgovjgrXjg7zjg5PjgrnvvIjku6XkuIvvvIzjgIzmnKzjgrXjg7zjg5PjgrnjgI3j
+gajjgYTjgYTjgb7jgZnjgILvvInjga7liKnnlKjmnaHku7bjgpLlrprjgoHjgovjgoLjga7jgafjgZnj
+gILnmbvpjLLjg6bjg7zjgrbjg7zjga7nmobjgZXjgb7vvIjku6XkuIvvvIzjgIzjg6bjg7zjgrbjg7zj
+gI3jgajjgYTjgYTjgb7jgZnjgILvvInjgavjga/vvIzmnKzopo/ntITjgavlvpPjgaPjgabvvIzmnKzj
+grXjg7zjg5PjgrnjgpLjgZTliKnnlKjjgYTjgZ/jgaDjgY3jgb7jgZnjgIIKDQ0K56ysMeadoe+8iOmB
+qeeUqO+8iQoxLuacrOimj+e0hOOBr++8jOODpuODvOOCtuODvOOBqOW9k+S6i+WLmeWxgOOBqOOBrumW
+k+OBruacrOOCteODvOODk+OCueOBruWIqeeUqOOBq+mWouOCj+OCi+S4gOWIh+OBrumWouS/guOBq+mB
+qeeUqOOBleOCjOOCi+OCguOBruOBqOOBl+OBvuOBmeOAgg0NCjIuIOW9k+S6i+WLmeWxgOOBr+acrOOC
+teODvOODk+OCueOBq+mWouOBl++8jOacrOimj+e0hOOBruOBu+OBi++8jOOBlOWIqeeUqOOBq+OBguOB
+n+OBo+OBpuOBruODq+ODvOODq+etie+8jOWQhOeoruOBruWumuOCge+8iOS7peS4i++8jOOAjOWAi+WI
+peimj+WumuOAjeOBqOOBhOOBhOOBvuOBmeOAgu+8ieOCkuOBmeOCi+OBk+OBqOOBjOOBguOCiuOBvuOB
+meOAguOBk+OCjOOCieWAi+WIpeimj+WumuOBr+OBneOBruWQjeensOOBruOBhOOBi+OCk+OBq+mWouOC
+j+OCieOBmu+8jOacrOimj+e0hOOBruS4gOmDqOOCkuani+aIkOOBmeOCi+OCguOBruOBqOOBl+OBvuOB
+meOAgg0NCjMu5pys6KaP57SE44Gu6KaP5a6a44GM5YmN5p2h44Gu5YCL5Yil6KaP5a6a44Gu6KaP5a6a
+44Go55+b55u+44GZ44KL5aC05ZCI44Gr44Gv77yM5YCL5Yil6KaP5a6a44Gr44GK44GE44Gm54m55q61
+44Gu5a6a44KB44Gq44GN6ZmQ44KK77yM5YCL5Yil6KaP5a6a44Gu6KaP5a6a44GM5YSq5YWI44GV44KM
+44KL44KC44Gu44Go44GX44G+44GZ44CCChHigKgNCuesrDLmnaHvvIjliKnnlKjnmbvpjLLvvIkKMS7m
+nKzjgrXjg7zjg5PjgrnjgavjgYrjgYTjgabjga/vvIznmbvpjLLluIzmnJvogIXjgYzmnKzopo/ntITj
+gavlkIzmhI/jga7kuIrvvIzlvZPkuovli5nlsYDjga7lrprjgoHjgovmlrnms5XjgavjgojjgaPjgabl
+iKnnlKjnmbvpjLLjgpLnlLPoq4vjgZfvvIzlvZPkuovli5nlsYDjgYzjgZPjga7mib/oqo3jgpLnmbvp
+jLLluIzmnJvogIXjgavpgJrnn6XjgZnjgovjgZPjgajjgavjgojjgaPjgabvvIzliKnnlKjnmbvpjLLj
+gYzlrozkuobjgZnjgovjgoLjga7jgajjgZfjgb7jgZnjgIINDQoyLiDlvZPkuovli5nlsYDjga/vvIzl
+iKnnlKjnmbvpjLLjga7nlLPoq4vogIXjgavku6XkuIvjga7kuovnlLHjgYzjgYLjgovjgajliKTmlq3j
+gZfjgZ/loLTlkIjvvIzliKnnlKjnmbvpjLLjga7nlLPoq4vjgpLmib/oqo3jgZfjgarjgYTjgZPjgajj
+gYzjgYLjgorvvIzjgZ3jga7nkIbnlLHjgavjgaTjgYTjgabjga/kuIDliIfjga7plovnpLrnvqnli5nj
+gpLosqDjgo/jgarjgYTjgoLjga7jgajjgZfjgb7jgZnjgIIN44O75pys6KaP57SE44Gr6YGV5Y+N44GX
+44Gf44GT44Go44GM44GC44KL6ICF44GL44KJ44Gu55Sz6KuL44Gn44GC44KL5aC05ZCICuODu+OBneOB
+ruS7lu+8jOW9k+S6i+WLmeWxgOOBjOWIqeeUqOeZu+mMsuOCkuebuOW9k+OBp+OBquOBhOOBqOWIpOaW
+reOBl+OBn+WgtOWQiAoNDQrnrKwz5p2h77yI5YCL5Lq65oOF5aCx44Gu5Y+W44KK5omx44GE77yJCjEu
+IOWAi+S6uuaDheWgseWPiuOBs+WIqeeUqOiAheaDheWgseOBq+OBpOOBhOOBpuOBr+OAgeW9k+S6i+WL
+meWxgOOBjOWIpemAlOWumuOCgeOCi+OAjOODl+ODqeOCpOODkOOCt+ODvOODneODquOCt+ODvOOAjeOB
+q+WJh+OCiuOAgemBqeaAp+OBq+WPluOCiuaJseOBhuOBk+OBqOOBqOOBl+OBvuOBmeOAggoNDQrnrKw0
+5p2h77yI56aB5q2i5LqL6aCF77yJCiDjg6bjg7zjgrbjg7zjga/vvIzmnKzjgrXjg7zjg5Pjgrnjga7l
+iKnnlKjjgavjgYLjgZ/jgorvvIzku6XkuIvjga7ooYzngrrjgpLjgZfjgabjga/jgarjgorjgb7jgZvj
+gpPjgIIN44O75rqAMTfmrbPmnKrmuoDjga7liKnnlKgK44O75rOV5Luk44G+44Gf44Gv5YWs5bqP6Imv
+5L+X44Gr6YGV5Y+N44GZ44KL6KGM54K6CuODu+eKr+e9quihjOeCuuOBq+mWoumAo+OBmeOCi+ihjOeC
+ugrjg7vlvZPkuovli5nlsYDvvIzmnKzjgrXjg7zjg5Pjgrnjga7ku5bjga7jg6bjg7zjgrbjg7zvvIzj
+gb7jgZ/jga/nrKzkuInogIXjga7jgrXjg7zjg5Djg7zjgb7jgZ/jga/jg43jg4Pjg4jjg6/jg7zjgq/j
+ga7mqZ/og73jgpLnoLTlo4rjgZfjgZ/jgorvvIzlpqjlrrPjgZfjgZ/jgorjgZnjgovooYzngroK44O7
+5b2T5LqL5YuZ5bGA44Gu44K144O844OT44K544Gu6YGL5Za244KS5aao5a6z44GZ44KL44GK44Gd44KM
+44Gu44GC44KL6KGM54K6CuODu+S7luOBruODpuODvOOCtuODvOOBq+mWouOBmeOCi+WAi+S6uuaDheWg
+seetieOCkuWPjumbhuOBvuOBn+OBr+iThOepjeOBmeOCi+ihjOeCugrjg7vkuI3mraPjgqLjgq/jgrvj
+grnjgpLjgZfvvIzjgb7jgZ/jga/jgZPjgozjgpLoqabjgb/jgovooYzngroK44O75LuW44Gu44Om44O8
+44K244O844Gr5oiQ44KK44GZ44G+44GZ6KGM54K6CuODu+W9k+S6i+WLmeWxgOOBruOCteODvOODk+OC
+ueOBq+mWoumAo+OBl+OBpu+8jOWPjeekvuS8mueahOWLouWKm+OBq+WvvuOBl+OBpuebtOaOpeOBvuOB
+n+OBr+mWk+aOpeOBq+WIqeebiuOCkuS+m+S4juOBmeOCi+ihjOeCugrjg7vlvZPkuovli5nlsYDvvIzm
+nKzjgrXjg7zjg5Pjgrnjga7ku5bjga7jg6bjg7zjgrbjg7zjgb7jgZ/jga/nrKzkuInogIXjga7nn6Xn
+moTosqHnlKPmqKnvvIzogpblg4/mqKnvvIzjg5fjg6njgqTjg5Djgrfjg7zvvIzlkI3jg7voqonjgZ3j
+ga7ku5bjga7mqKnliKnjgb7jgZ/jga/liKnnm4rjgpLkvrXlrrPjgZnjgovooYzngroK44O75Lul5LiL
+44Gu6KGo54++44KS5ZCr44G/77yM44G+44Gf44Gv5ZCr44KA44Go5b2T5LqL5YuZ5bGA44GM5Yik5pat
+44GZ44KL5YaF5a6544KS5pys44K144O844OT44K55LiK44Gr5oqV56i/44GX77yM44G+44Gf44Gv6YCB
+5L+h44GZ44KL6KGM54K6CuODu+mBjuW6puOBq+aatOWKm+eahOOBquihqOePvgrjg7vpnLLpqqjjgarm
+gKfnmoTooajnj74K44O75Lq656iu77yM5Zu957GN77yM5L+h5p2h77yM5oCn5Yil77yM56S+5Lya55qE
+6Lqr5YiG77yM6ZaA5Zyw562J44Gr44KI44KL5beu5Yil44Gr44Gk44Gq44GM44KL6KGo54++CuODu+iH
+quauuu+8jOiHquWCt+ihjOeCuu+8jOiWrOeJqeS5seeUqOOCkuiqmOW8leOBvuOBn+OBr+WKqemVt+OB
+meOCi+ihqOePvgrjg7vjgZ3jga7ku5blj43npL7kvJrnmoTjgarlhoXlrrnjgpLlkKvjgb/ku5bkurrj
+gavkuI3lv6vmhJ/jgpLkuI7jgYjjgovooajnj74K44O75Lul5LiL44KS55uu55qE44Go44GX77yM44G+
+44Gf44Gv55uu55qE44Go44GZ44KL44Go5b2T5LqL5YuZ5bGA44GM5Yik5pat44GZ44KL6KGM54K6CuOD
+u+WWtualre+8jOWuo+S8ne+8jOW6g+WRiu+8jOWLp+iqmO+8jOOBneOBruS7luWWtuWIqeOCkuebruea
+hOOBqOOBmeOCi+ihjOeCuu+8iOW9k+S6i+WLmeWxgOOBruiqjeOCgeOBn+OCguOBruOCkumZpOOBjeOB
+vuOBmeOAgu+8iQrjg7vmgKfooYzngrrjgoTjgo/jgYTjgZvjgaTjgarooYzngrrjgpLnm67nmoTjgajj
+gZnjgovooYzngroK44O76Z2i6K2Y44Gu44Gq44GE55Ww5oCn44Go44Gu5Ye65Lya44GE44KE5Lqk6Zqb
+44KS55uu55qE44Go44GZ44KL6KGM54K6CuODu+S7luOBruODpuODvOOCtuODvOOBq+WvvuOBmeOCi+Wr
+jOOBjOOCieOBm+OChOiqueisl+S4reWCt+OCkuebrueahOOBqOOBmeOCi+ihjOeCugrjg7vku5bnpL7j
+ga5TTlPnrYnjgIHnrKzkuInogIXjgrXjg7zjg5Pjgrnjga7liKnnlKjjgpLkvLTjgYbooYzngrrjga7l
+i6foqpgK44O75b2T5LqL5YuZ5bGA77yM5pys44K144O844OT44K544Gu5LuW44Gu44Om44O844K244O8
+77yM44G+44Gf44Gv56ys5LiJ6ICF44Gr5LiN5Yip55uK77yM5pCN5a6z44G+44Gf44Gv5LiN5b+r5oSf
+44KS5LiO44GI44KL44GT44Go44KS55uu55qE44Go44GZ44KL6KGM54K6CuODu+OBneOBruS7luacrOOC
+teODvOODk+OCueOBjOS6iOWumuOBl+OBpuOBhOOCi+WIqeeUqOebrueahOOBqOeVsOOBquOCi+ebruea
+hOOBp+acrOOCteODvOODk+OCueOCkuWIqeeUqOOBmeOCi+ihjOeCugrjg7vlrpfmlZnmtLvli5Xjgb7j
+gZ/jga/lrpfmlZnlm6PkvZPjgbjjga7li6foqpjooYzngroK44O744Gd44Gu5LuW77yM5b2T5LqL5YuZ
+5bGA44GM5LiN6YGp5YiH44Go5Yik5pat44GZ44KL6KGM54K6Cg0NCuesrDbmnaHvvIjmnKzjgrXjg7zj
+g5Pjgrnjga7mj5Dkvpvjga7lgZzmraLnrYnvvIkKMS4g5b2T5LqL5YuZ5bGA44Gv77yM5Lul5LiL44Gu
+44GE44Ga44KM44GL44Gu5LqL55Sx44GM44GC44KL44Go5Yik5pat44GX44Gf5aC05ZCI77yM44Om44O8
+44K244O844Gr5LqL5YmN44Gr6YCa55+l44GZ44KL44GT44Go44Gq44GP5pys44K144O844OT44K544Gu
+5YWo6YOo44G+44Gf44Gv5LiA6YOo44Gu5o+Q5L6b44KS5YGc5q2i44G+44Gf44Gv5Lit5pat44GZ44KL
+44GT44Go44GM44Gn44GN44KL44KC44Gu44Go44GX44G+44GZ44CCCuODu+acrOOCteODvOODk+OCueOB
+q+OBi+OBi+OCi+OCs+ODs+ODlOODpeODvOOCv+OCt+OCueODhuODoOOBruS/neWuiOeCueaknOOBvuOB
+n+OBr+abtOaWsOOCkuihjOOBhuWgtOWQiArjg7vlnLDpnIfvvIzokL3pm7fvvIzngavngb3vvIzlgZzp
+m7vjgb7jgZ/jga/lpKnngb3jgarjganjga7kuI3lj6/mipflipvjgavjgojjgorvvIzmnKzjgrXjg7zj
+g5Pjgrnjga7mj5DkvpvjgYzlm7Dpm6PjgajjgarjgaPjgZ/loLTlkIgK44O744Kz44Oz44OU44Ol44O8
+44K/44G+44Gf44Gv6YCa5L+h5Zue57ea562J44GM5LqL5pWF44Gr44KI44KK5YGc5q2i44GX44Gf5aC0
+5ZCICuODu+OBneOBruS7lu+8jOW9k+S6i+WLmeWxgOOBjOacrOOCteODvOODk+OCueOBruaPkOS+m+OB
+jOWbsOmbo+OBqOWIpOaWreOBl+OBn+WgtOWQiA0NCjIuIOW9k+S6i+WLmeWxgOOBr++8jOacrOOCteOD
+vOODk+OCueOBruaPkOS+m+OBruWBnOatouOBvuOBn+OBr+S4reaWreOBq+OCiOOCiu+8jOODpuODvOOC
+tuODvOOBvuOBn+OBr+esrOS4ieiAheOBjOiiq+OBo+OBn+OBhOOBi+OBquOCi+S4jeWIqeebiuOBvuOB
+n+OBr+aQjeWus+OBq+OBpOOBhOOBpuOCgu+8jOS4gOWIh+OBruiyrOS7u+OCkuiyoOOCj+OBquOBhOOC
+guOBruOBqOOBl+OBvuOBmeOAggoNDQrnrKw35p2h77yI6JGX5L2c5qip77yJCjEu44Om44O844K244O8
+44Gv77yM6Ieq44KJ6JGX5L2c5qip562J44Gu5b+F6KaB44Gq55+l55qE6LKh55Sj5qip44KS5pyJ44GZ
+44KL44GL77yM44G+44Gf44Gv5b+F6KaB44Gq5qip5Yip6ICF44Gu6Kix6Ku+44KS5b6X44Gf5paH56ug
+77yM55S75YOP44KE5pig5YOP562J44Gu5oOF5aCx44Gr6Zai44GX44Gm44Gu44G/77yM5pys44K144O8
+44OT44K544KS5Yip55So44GX77yM5oqV56i/44Gq44GE44GX44Ki44OD44OX44Ot44O844OJ44GZ44KL
+44GT44Go44GM44Gn44GN44KL44KC44Gu44Go44GX44G+44GZ44CCDQ0KMi7jg6bjg7zjgrbjg7zjgYzm
+nKzjgrXjg7zjg5PjgrnjgpLliKnnlKjjgZfjgabmipXnqL/jgarjgYTjgZfjgqLjg4Pjg5fjg63jg7zj
+g4njgZfjgZ/mlofnq6DvvIznlLvlg4/vvIzmmKDlg4/nrYnjga7okZfkvZzmqKnjgavjgaTjgYTjgabj
+ga/vvIzlvZPoqbLjg6bjg7zjgrbjg7zjgZ3jga7ku5bml6LlrZjjga7mqKnliKnogIXjgavnlZnkv53j
+gZXjgozjgovjgoLjga7jgajjgZfjgb7jgZnjgILjgZ/jgaDjgZfvvIzlvZPkuovli5nlsYDjga/vvIzm
+nKzjgrXjg7zjg5PjgrnjgpLliKnnlKjjgZfjgabmipXnqL/jgarjgYTjgZfjgqLjg4Pjg5fjg63jg7zj
+g4njgZXjgozjgZ/mlofnq6DvvIznlLvlg4/vvIzmmKDlg4/nrYnjgavjgaTjgYTjgabvvIzmnKzjgrXj
+g7zjg5Pjgrnjga7mlLnoia/vvIzlk4Hos6rjga7lkJHkuIrvvIzjgb7jgZ/jga/kuI3lgpnjga7mmK/m
+raPnrYnjgarjgonjgbPjgavmnKzjgrXjg7zjg5Pjgrnjga7lkajnn6XlrqPkvJ3nrYnjgavlv4XopoHj
+garnr4Tlm7LjgafliKnnlKjjgafjgY3jgovjgoLjga7jgajjgZfvvIzjg6bjg7zjgrbjg7zjga/vvIzj
+gZPjga7liKnnlKjjgavplqLjgZfjgabvvIzokZfkvZzogIXkurrmoLzmqKnjgpLooYzkvb/jgZfjgarj
+gYTjgoLjga7jgajjgZfjgb7jgZnjgIINDQozLuWJjemgheacrOaWh+OBruWumuOCgeOCi+OCguOBruOC
+kumZpOOBje+8jOacrOOCteODvOODk+OCueOBiuOCiOOBs+acrOOCteODvOODk+OCueOBq+mWoumAo+OB
+meOCi+S4gOWIh+OBruaDheWgseOBq+OBpOOBhOOBpuOBruiRl+S9nOaoqeOBiuOCiOOBs+OBneOBruS7
+luOBruefpeeahOiyoeeUo+aoqeOBr+OBmeOBueOBpuW9k+S6i+WLmeWxgOOBvuOBn+OBr+W9k+S6i+WL
+meWxgOOBq+OBneOBruWIqeeUqOOCkuioseirvuOBl+OBn+aoqeWIqeiAheOBq+W4sOWxnuOBl++8jOOD
+puODvOOCtuODvOOBr+eEoeaWreOBp+ikh+ijve+8jOitsua4oe+8jOiyuOS4ju+8jOe/u+ios++8jOaU
+ueWkie+8jOi7oui8ie+8jOWFrOihhumAgeS/oe+8iOmAgeS/oeWPr+iDveWMluOCkuWQq+OBv+OBvuOB
+meOAgu+8ie+8jOS8nemAge+8jOmFjeW4g++8jOWHuueJiO+8jOWWtualreS9v+eUqOetieOCkuOBl+OB
+puOBr+OBquOCieOBquOBhOOCguOBruOBqOOBl+OBvuOBmeOAggoNDQrnrKw45p2h77yI5Yip55So5Yi2
+6ZmQ44GK44KI44Gz55m76Yyy5oq55raI77yJCjEuIOW9k+S6i+WLmeWxgOOBr++8jOODpuODvOOCtuOD
+vOOBjOS7peS4i+OBruOBhOOBmuOCjOOBi+OBq+ipsuW9k+OBmeOCi+WgtOWQiOOBq+OBr++8jOS6i+WJ
+jeOBrumAmuefpeOBquOBj++8jOaKleeov+ODh+ODvOOCv+OCkuWJiumZpOOBl++8jOODpuODvOOCtuOD
+vOOBq+WvvuOBl+OBpuacrOOCteODvOODk+OCueOBruWFqOmDqOOCguOBl+OBj+OBr+S4gOmDqOOBruWI
+qeeUqOOCkuWItumZkOOBl+OBvuOBn+OBr+ODpuODvOOCtuODvOOBqOOBl+OBpuOBrueZu+mMsuOCkuaK
+uea2iOOBmeOCi+OBk+OBqOOBjOOBp+OBjeOCi+OCguOBruOBqOOBl+OBvuOBmeOAggrjg7vmnKzopo/n
+tITjga7jgYTjgZrjgozjgYvjga7mnaHpoIXjgavpgZXlj43jgZfjgZ/loLTlkIgK44O755m76Yyy5LqL
+6aCF44Gr6Jma5YG944Gu5LqL5a6f44GM44GC44KL44GT44Go44GM5Yik5piO44GX44Gf5aC05ZCICuOD
+u+W9k+S6i+WLmeWxgOOBi+OCieOBrumAo+e1oeOBq+WvvuOBl++8jOS4gOWumuacn+mWk+i/lOetlOOB
+jOOBquOBhOWgtOWQiArjg7vjgZ3jga7ku5bvvIzlvZPkuovli5nlsYDjgYzmnKzjgrXjg7zjg5Pjgrnj
+ga7liKnnlKjjgpLpganlvZPjgafjgarjgYTjgajliKTmlq3jgZfjgZ/loLTlkIgNDQoyLuWJjemgheWQ
+hOWPt+OBruOBhOOBmuOCjOOBi+OBq+ipsuW9k+OBl+OBn+WgtOWQiO+8jOODpuODvOOCtuODvOOBr++8
+jOW9k+eEtuOBq+W9k+S6i+WLmeWxgOOBq+WvvuOBmeOCi+S4gOWIh+OBruWCteWLmeOBq+OBpOOBhOOB
+puacn+mZkOOBruWIqeebiuOCkuWkseOBhO+8jOOBneOBruaZgueCueOBq+OBiuOBhOOBpuiyoOaLheOB
+meOCi+S4gOWIh+OBruWCteWLmeOCkuebtOOBoeOBq+S4gOaLrOOBl+OBpuW8gea4iOOBl+OBquOBkeOC
+jOOBsOOBquOCiuOBvuOBm+OCk+OAgg0NCjMuIOW9k+S6i+WLmeWxgOOBryzmnKzmnaHjgavln7rjgaXj
+gY3lvZPkuovli5nlsYDjgYzooYzjgaPjgZ/ooYzngrrjgavjgojjgorjg6bjg7zjgrbjg7zjgavnlJ/j
+gZjjgZ/mkI3lrrPjgavjgaTjgYTjgabvvIzkuIDliIfjga7osqzku7vjgpLosqDjgYTjgb7jgZvjgpPj
+gIINDQ0K56ysOeadoe+8iOmAgOS8mu+8iQogIOODpuODvOOCtuODvOOBr++8jOW9k+S6i+WLmeWxgOOB
+ruWumuOCgeOCi+mAgOS8muaJi+e2muOBq+OCiOOCiu+8jOacrOOCteODvOODk+OCueOBi+OCiemAgOS8
+muOBp+OBjeOCi+OCguOBruOBqOOBl+OBvuOBmeOAggoNDQrnrKwxMOadoe+8iOS/neiovOOBruWQpuiq
+jeOBiuOCiOOBs+WFjeiyrOS6i+mghe+8iQoxLiDlvZPkuovli5nlsYDjga/vvIzmnKzjgrXjg7zjg5Pj
+grnjgavkuovlrp/kuIrjgb7jgZ/jga/ms5XlvovkuIrjga7nkZXnlrXvvIjlronlhajmgKfvvIzkv6Hp
+oLzmgKfvvIzmraPnorrmgKfvvIzlrozlhajmgKfvvIzmnInlirnmgKfvvIznibnlrprjga7nm67nmoTj
+gbjjga7pganlkIjmgKfvvIzjgrvjgq3jg6Xjg6rjg4bjgqPjgarjganjgavplqLjgZnjgovmrKDpmaXv
+vIzjgqjjg6njg7zjgoTjg5DjgrDvvIzmqKnliKnkvrXlrrPjgarjganjgpLlkKvjgb/jgb7jgZnjgILv
+vInjgYzjgarjgYTjgZPjgajjgpLmmI7npLrnmoTjgavjgoLpu5nnpLrnmoTjgavjgoLkv53oqLzjgZfj
+gabjgYrjgorjgb7jgZvjgpPjgIINDQoyLiDlvZPkuovli5nlsYDjga/vvIzmnKzjgrXjg7zjg5Pjgrnj
+gavotbflm6DjgZfjgabjg6bjg7zjgrbjg7zjgavnlJ/jgZjjgZ/jgYLjgonjgobjgovmkI3lrrPjgavj
+gaTjgYTjgabkuIDliIfjga7osqzku7vjgpLosqDjgYTjgb7jgZvjgpPjgILjgZ/jgaDjgZfvvIzmnKzj
+grXjg7zjg5PjgrnjgavplqLjgZnjgovlvZPkuovli5nlsYDjgajjg6bjg7zjgrbjg7zjgajjga7plpPj
+ga7lpZHntITvvIjmnKzopo/ntITjgpLlkKvjgb/jgb7jgZnjgILvvInjgYzmtojosrvogIXlpZHntITm
+s5XjgavlrprjgoHjgovmtojosrvogIXlpZHntITjgajjgarjgovloLTlkIjvvIzjgZPjga7lhY3osqzo
+po/lrprjga/pgannlKjjgZXjgozjgb7jgZvjgpPjgIINDQozLuWJjemgheOBn+OBoOOBl+abuOOBq+Wu
+muOCgeOCi+WgtOWQiOOBp+OBguOBo+OBpuOCgu+8jOW9k+S6i+WLmeWxgOOBr++8jOW9k+S6i+WLmeWx
+gOOBrumBjuWkse+8iOmHjemBjuWkseOCkumZpOOBjeOBvuOBmeOAgu+8ieOBq+OCiOOCi+WCteWLmeS4
+jeWxpeihjOOBvuOBn+OBr+S4jeazleihjOeCuuOBq+OCiOOCiuODpuODvOOCtuODvOOBq+eUn+OBmOOB
+n+aQjeWus+OBruOBhuOBoeeJueWIpeOBquS6i+aDheOBi+OCieeUn+OBmOOBn+aQjeWus++8iOW9k+S6
+i+WLmeWxgOOBvuOBn+OBr+ODpuODvOOCtuODvOOBjOaQjeWus+eZuueUn+OBq+OBpOOBjeS6iOimi+OB
+l++8jOOBvuOBn+OBr+S6iOimi+OBl+W+l+OBn+WgtOWQiOOCkuWQq+OBv+OBvuOBmeOAgu+8ieOBq+OB
+pOOBhOOBpuS4gOWIh+OBruiyrOS7u+OCkuiyoOOBhOOBvuOBm+OCk+OAguOBvuOBn++8jOW9k+S6i+WL
+meWxgOOBrumBjuWkse+8iOmHjemBjuWkseOCkumZpOOBjeOBvuOBmeOAgu+8ieOBq+OCiOOCi+WCteWL
+meS4jeWxpeihjOOBvuOBn+OBr+S4jeazleihjOeCuuOBq+OCiOOCiuODpuODvOOCtuODvOOBq+eUn+OB
+mOOBn+aQjeWus+OBruizoOWEn+OBr++8jOODpuODvOOCtuODvOOBi+OCieW9k+ipsuaQjeWus+OBjOeZ
+uueUn+OBl+OBn+aciOOBq+WPl+mgmOOBl+OBn+WIqeeUqOaWmeOBrumhjeOCkuS4iumZkOOBqOOBl+OB
+vuOBmeOAgg0NCjQuIOW9k+S6i+WLmeWxgOOBr++8jOacrOOCteODvOODk+OCueOBq+mWouOBl+OBpu+8
+jOODpuODvOOCtuODvOOBqOS7luOBruODpuODvOOCtuODvOOBvuOBn+OBr+esrOS4ieiAheOBqOOBrumW
+k+OBq+OBiuOBhOOBpueUn+OBmOOBn+WPluW8le+8jOmAo+e1oeOBvuOBn+OBr+e0m+S6ieetieOBq+OB
+pOOBhOOBpuS4gOWIh+iyrOS7u+OCkuiyoOOBhOOBvuOBm+OCk+OAguWIqeeUqOiAheOBqOS7luOBruWI
+qeeUqOiAheOBp+ODiOODqeODluODq+OBq+OBquOBo+OBn+WgtOWQiOOBp+OCguOAgeS4oeekvuWQjOWj
+q+OBruiyrOS7u+OBp+ino+axuuOBmeOCi+OCguOBruOBqOOBl+OAgeW9k+S6i+WLmeWxgOOBq+OBr+S4
+gOWIh+OBruiri+axguOCkuOBl+OBquOBhOOCguOBruOBqOOBl+OBvuOBmeOAgg0NCjUuIOWIqeeUqOiA
+heOBruihjOeCuuOBq+OCiOOCiuOAgeesrOS4ieiAheOBi+OCieW9k+S6i+WLmeWxgOOBjOaQjeWus+iz
+oOWEn+etieOBruiri+axguOCkuOBleOCjOOBn+WgtOWQiOOBq+OBr+WIqeeUqOiAheOBruiyu+eUqO+8
+iOW8geitt+Wjq+iyu+eUqO+8ieOBqOiyrOS7u+OBp+OAgeOBk+OCjOOCkuino+axuuOBmeOCi+OCguOB
+ruOBqOOBl+OBvuOBmeOAguW9k+S6i+WLmeWxgOOBjOOAgeW9k+ipsuesrOS4ieiAheOBq+WvvuOBl+OB
+puOAgeaQjeWus+izoOWEn+OCkuaUr+aJleOBo+OBn+WgtOWQiOOBq+OBr+OAgeWIqeeUqOiAheOBr+W9
+k+S6i+WLmeWxgOOBq+WvvuOBl+OBpuW9k+ipsuaQjeWus+izoOWEn+mHkeOCkuWQq+OCgOS4gOWIh+OB
+ruiyu+eUqO+8iOW8geitt+Wjq+iyu+eUqOWPiuOBs+mAuOWkseWIqeebiuOCkuWQq+OCgO+8ieOBmeOC
+i+OCguOBruOBqOOBl+OBvuOBmeOAgg0NCjYuIOacrOOCteODvOODk+OCueOBp+OBu+OBi+OBruWIqeeU
+qOiAheOBjOaKleeov+OBl+OBn+aDheWgseOBruato+eiuuaAp+OBq+OBpOOBhOOBpuOAgeW9k+S6i+WL
+meWxgOOBr+S/neiovOOBl+OBvuOBm+OCk+OAguW9k+S6i+WLmeWxgOOBr+OAgeacrOOCteODvOODk+OC
+ueOBq+aOsui8ieOBleOCjOOBpuOBhOOCi+aDheWgseOBq+OBpOOBhOOBpuOBrue0m+S6ieWPiuOBs+OD
+iOODqeODluODq+OBq+OBpOOBhOOBpuS4gOW3ruiyrOS7u+OCkuiyoOOBhOOBvuOBm+OCk+OAggoNDQrn
+rKwxMeadoe+8iOOCteODvOODk+OCueWGheWuueOBruWkieabtOetie+8iQogIOW9k+S6i+WLmeWxgOOB
+r++8jOODpuODvOOCtuODvOOBq+mAmuefpeOBmeOCi+OBk+OBqOOBquOBj++8jOacrOOCteODvOODk+OC
+ueOBruWGheWuueOCkuWkieabtOOBl+OBvuOBn+OBr+acrOOCteODvOODk+OCueOBruaPkOS+m+OCkuS4
+reatouOBmeOCi+OBk+OBqOOBjOOBp+OBjeOCi+OCguOBruOBqOOBl++8jOOBk+OCjOOBq+OCiOOBo+OB
+puODpuODvOOCtuODvOOBq+eUn+OBmOOBn+aQjeWus+OBq+OBpOOBhOOBpuS4gOWIh+OBruiyrOS7u+OC
+kuiyoOOBhOOBvuOBm+OCk+OAggoNDQrnrKwxMuadoe+8iOWIqeeUqOimj+e0hOOBruWkieabtO+8iQog
+IOW9k+S6i+WLmeWxgOOBr++8jOW/heimgeOBqOWIpOaWreOBl+OBn+WgtOWQiOOBq+OBr++8jOODpuOD
+vOOCtuODvOOBq+mAmuefpeOBmeOCi+OBk+OBqOOBquOBj+OBhOOBpOOBp+OCguacrOimj+e0hOOCkuWk
+ieabtOOBmeOCi+OBk+OBqOOBjOOBp+OBjeOCi+OCguOBruOBqOOBl+OBvuOBmeOAguOBquOBiu+8jOac
+rOimj+e0hOOBruWkieabtOW+jO+8jOacrOOCteODvOODk+OCueOBruWIqeeUqOOCkumWi+Wni+OBl+OB
+n+WgtOWQiOOBq+OBr++8jOW9k+ipsuODpuODvOOCtuODvOOBr+WkieabtOW+jOOBruimj+e0hOOBq+WQ
+jOaEj+OBl+OBn+OCguOBruOBqOOBv+OBquOBl+OBvuOBmeOAggoNDQrnrKwxM+adoe+8iOmAmuefpeOB
+vuOBn+OBr+mAo+e1oe+8iQogIOODpuODvOOCtuODvOOBqOW9k+S6i+WLmeWxgOOBqOOBrumWk+OBrumA
+muefpeOBvuOBn+OBr+mAo+e1oeOBr++8jOW9k+S6i+WLmeWxgOOBruWumuOCgeOCi+aWueazleOBq+OC
+iOOBo+OBpuihjOOBhuOCguOBruOBqOOBl+OBvuOBmeOAguW9k+S6i+WLmeWxgOOBryzjg6bjg7zjgrbj
+g7zjgYvjgoksIOW9k+S6i+WLmeWxgOOBjOWIpemAlOWumuOCgeOCi+aWueW8j+OBq+W+k+OBo+OBn+Wk
+ieabtOWxiuOBkeWHuuOBjOOBquOBhOmZkOOCiiznj77lnKjnmbvpjLLjgZXjgozjgabjgYTjgovpgKPn
+taHlhYjjgYzmnInlirnjgarjgoLjga7jgajjgb/jgarjgZfjgablvZPoqbLpgKPntaHlhYjjgbjpgJrn
+n6Xjgb7jgZ/jga/pgKPntaHjgpLooYzjgYQs44GT44KM44KJ44GvLOeZuuS/oeaZguOBq+ODpuODvOOC
+tuODvOOBuOWIsOmBlOOBl+OBn+OCguOBruOBqOOBv+OBquOBl+OBvuOBmeOAggoNDQrnrKwxNOadoe+8
+iOaoqeWIqee+qeWLmeOBruitsua4oeOBruemgeatou+8iQogIOODpuODvOOCtuODvOOBr++8jOW9k+S6
+i+WLmeWxgOOBruabuOmdouOBq+OCiOOCi+S6i+WJjeOBruaJv+irvuOBquOBj++8jOWIqeeUqOWlkee0
+hOS4iuOBruWcsOS9jeOBvuOBn+OBr+acrOimj+e0hOOBq+WfuuOBpeOBj+aoqeWIqeOCguOBl+OBj+OB
+r+e+qeWLmeOCkuesrOS4ieiAheOBq+itsua4oeOBl++8jOOBvuOBn+OBr+aLheS/neOBq+S+m+OBmeOC
+i+OBk+OBqOOBr+OBp+OBjeOBvuOBm+OCk+OAggoNDQrnrKwxNeadoe+8iOa6luaLoOazleODu+ijgeWI
+pOeuoei9hO+8iQogIOacrOimj+e0hOOBruino+mHiOOBq+OBguOBn+OBo+OBpuOBr++8jOaXpeacrOaz
+leOCkua6luaLoOazleOBqOOBl+OBvuOBmeOAggrmnKzjgrXjg7zjg5PjgrnjgavplqLjgZfjgabntJvk
+uonjgYznlJ/jgZjjgZ/loLTlkIjjgavjga/vvIzlvZPkuovli5nlsYDjga7miYDlnKjlnLDjgpLnrqHo
+vYTjgZnjgovoo4HliKTmiYDjgpLlsILlsZ7nmoTlkIjmhI/nrqHovYTjgajjgZfjgb7jgZnjgIINDQrk
+u6XkuIoKA
+</mutableString>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="ILy-rb-6dD" firstAttribute="top" secondItem="cFA-SJ-6y7" secondAttribute="topMargin" constant="5" id="0qX-Cu-RC4"/>
+                                                <constraint firstAttribute="bottom" secondItem="ILy-rb-6dD" secondAttribute="bottom" constant="5" id="NnH-Ko-qAV"/>
+                                                <constraint firstItem="ILy-rb-6dD" firstAttribute="leading" secondItem="cFA-SJ-6y7" secondAttribute="leadingMargin" constant="5" id="fM9-H1-4m3"/>
+                                                <constraint firstAttribute="trailing" secondItem="ILy-rb-6dD" secondAttribute="trailing" constant="10" id="uDr-35-NXg"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="TermsOfUseLabel" destination="ILy-rb-6dD" id="mQU-L1-dhn"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="niq-b1-E85"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="3nA-LA-4EA" firstAttribute="leading" secondItem="niq-b1-E85" secondAttribute="leading" id="3Jx-Ai-QSN"/>
+                            <constraint firstItem="3nA-LA-4EA" firstAttribute="top" secondItem="niq-b1-E85" secondAttribute="top" id="GcV-rL-jNQ"/>
+                            <constraint firstItem="niq-b1-E85" firstAttribute="trailing" secondItem="3nA-LA-4EA" secondAttribute="trailing" id="uhm-Th-PuI"/>
+                            <constraint firstItem="niq-b1-E85" firstAttribute="bottom" secondItem="3nA-LA-4EA" secondAttribute="bottom" id="xWy-Et-TZF"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="c6n-hD-ccS"/>
+                    <connections>
+                        <outlet property="TermsOfUseTableView" destination="3nA-LA-4EA" id="Vee-dI-ycV"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="alT-Jc-Cho" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="263.768115942029" y="99.776785714285708"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

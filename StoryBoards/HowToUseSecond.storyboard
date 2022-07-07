@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="Aqq-mg-Tgs">
+            <objects>
+                <navigationController id="fX7-gL-jun" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="FLZ-dM-P5m">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="sOo-Pn-Lqo" kind="relationship" relationship="rootViewController" id="8p3-Pv-3c1"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="R00-zr-Sai" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-683" y="120"/>
+        </scene>
+        <!--How To Use Second Controller-->
+        <scene sceneID="Yjt-Gh-WQU">
+            <objects>
+                <viewController storyboardIdentifier="HowToUse4Controller" useStoryboardIdentifierAsRestorationIdentifier="YES" id="sOo-Pn-Lqo" customClass="HowToUseSecondController" customModule="ChatAppWithFirebase" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="d8G-I0-3OJ">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="xui-mZ-EAY">
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="ZUu-RJ-Xit"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="xui-mZ-EAY" firstAttribute="leading" secondItem="ZUu-RJ-Xit" secondAttribute="leading" id="HeJ-Im-IEB"/>
+                            <constraint firstItem="xui-mZ-EAY" firstAttribute="top" secondItem="ZUu-RJ-Xit" secondAttribute="top" id="LX9-Xv-3Ou"/>
+                            <constraint firstItem="ZUu-RJ-Xit" firstAttribute="trailing" secondItem="xui-mZ-EAY" secondAttribute="trailing" id="XeD-EH-E2T"/>
+                            <constraint firstItem="ZUu-RJ-Xit" firstAttribute="bottom" secondItem="xui-mZ-EAY" secondAttribute="bottom" id="vrq-xe-9Dr"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="5BX-xW-wwQ"/>
+                    <connections>
+                        <outlet property="HowToUseSecondTableView" destination="xui-mZ-EAY" id="pFn-hu-E6N"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8qh-iS-tI9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="182.60869565217394" y="97.767857142857139"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

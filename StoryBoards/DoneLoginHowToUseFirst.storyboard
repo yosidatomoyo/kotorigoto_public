@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="VMB-Cb-Bib">
+            <objects>
+                <navigationController id="2cu-Si-0b0" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="DKc-DO-n1U">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="VeI-yj-wWh" kind="relationship" relationship="rootViewController" id="j2T-Xx-SrN"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UR5-2i-9Ee" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1358" y="59"/>
+        </scene>
+        <!--Done Login How To Use First Controller-->
+        <scene sceneID="wn2-gp-dBy">
+            <objects>
+                <viewController storyboardIdentifier="DoneLoginHowToUseFirst" useStoryboardIdentifierAsRestorationIdentifier="YES" id="VeI-yj-wWh" customClass="DoneLoginHowToUseFirstController" customModule="ChatAppWithFirebase" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="aKS-Ln-akY">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="gy4-ud-AbN">
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="PLA-gl-IMV"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="PLA-gl-IMV" firstAttribute="trailing" secondItem="gy4-ud-AbN" secondAttribute="trailing" id="7Ov-Hp-ysg"/>
+                            <constraint firstItem="gy4-ud-AbN" firstAttribute="leading" secondItem="PLA-gl-IMV" secondAttribute="leading" id="Kjp-p3-tkY"/>
+                            <constraint firstItem="gy4-ud-AbN" firstAttribute="top" secondItem="PLA-gl-IMV" secondAttribute="top" id="Swf-Qn-Ro3"/>
+                            <constraint firstItem="PLA-gl-IMV" firstAttribute="bottom" secondItem="gy4-ud-AbN" secondAttribute="bottom" id="lwf-6N-pdp"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="G9M-Mi-Kmr"/>
+                    <connections>
+                        <outlet property="tableView" destination="gy4-ud-AbN" id="k3w-To-rD5"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tZH-xG-uBc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-654" y="59"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

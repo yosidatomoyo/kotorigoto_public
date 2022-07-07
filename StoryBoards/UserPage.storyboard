@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="t9e-mC-Gm3">
+            <objects>
+                <navigationController id="26G-fO-V67" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="qkN-VZ-cyk">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="E6g-aI-gfe" kind="relationship" relationship="rootViewController" id="eG8-TQ-evq"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uwc-TC-pu4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-774" y="126"/>
+        </scene>
+        <!--User Page View Controller-->
+        <scene sceneID="bq5-6l-Vzb">
+            <objects>
+                <viewController storyboardIdentifier="UserPageViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="E6g-aI-gfe" customClass="UserPageViewController" customModule="ChatAppWithFirebase" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ciS-bU-QWz">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="名前（5文字以内）" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NDh-Ld-Oax">
+                                <rect key="frame" x="30" y="108" width="149" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SRa-C6-r9d">
+                                <rect key="frame" x="300" y="148" width="31" height="30"/>
+                                <state key="normal" title="変更"/>
+                                <connections>
+                                    <action selector="UsernameChangeButton:" destination="E6g-aI-gfe" eventType="touchUpInside" id="c2z-Ku-zhV"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Ze-Mx-wN1">
+                                <rect key="frame" x="30" y="219" width="46" height="30"/>
+                                <state key="normal" title="使い方"/>
+                                <connections>
+                                    <action selector="HowToUse:" destination="E6g-aI-gfe" eventType="touchUpInside" id="qcB-Ku-Lnf"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DZy-EZ-yoY">
+                                <rect key="frame" x="30" y="289" width="92" height="30"/>
+                                <state key="normal" title="お問い合わせ"/>
+                                <connections>
+                                    <action selector="InquiryButton:" destination="E6g-aI-gfe" eventType="touchUpInside" id="z7C-Ks-aUS"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kRD-eh-Nvg">
+                                <rect key="frame" x="30" y="359" width="62" height="30"/>
+                                <state key="normal" title="利用規約"/>
+                                <connections>
+                                    <action selector="TermsButton:" destination="E6g-aI-gfe" eventType="touchUpInside" id="TFJ-gz-ifC"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LgX-aH-1hL">
+                                <rect key="frame" x="30" y="429" width="46" height="30"/>
+                                <state key="normal" title="初期化"/>
+                                <connections>
+                                    <action selector="ResetButton:" destination="E6g-aI-gfe" eventType="touchUpInside" id="P6I-vu-BmV"/>
+                                </connections>
+                            </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="usename" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="HJ7-Nv-4IW">
+                                <rect key="frame" x="30" y="149" width="250" height="30"/>
+                                <color key="backgroundColor" red="0.67272704139999995" green="1" blue="0.74646976350000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="gFb-6W-EUE"/>
+                                    <constraint firstAttribute="width" constant="250" id="gs9-pr-lmJ"/>
+                                </constraints>
+                                <color key="textColor" systemColor="labelColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="0L0-4G-SJm"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="LgX-aH-1hL" firstAttribute="top" secondItem="kRD-eh-Nvg" secondAttribute="bottom" constant="40" id="0Ww-e2-sgZ"/>
+                            <constraint firstItem="NDh-Ld-Oax" firstAttribute="top" secondItem="0L0-4G-SJm" secondAttribute="top" constant="20" id="5mg-dA-C2H"/>
+                            <constraint firstItem="LgX-aH-1hL" firstAttribute="leading" secondItem="0L0-4G-SJm" secondAttribute="leading" constant="30" id="668-ag-h2W"/>
+                            <constraint firstItem="HJ7-Nv-4IW" firstAttribute="leading" secondItem="0L0-4G-SJm" secondAttribute="leading" constant="30" id="AR1-uw-1rr"/>
+                            <constraint firstItem="3Ze-Mx-wN1" firstAttribute="leading" secondItem="0L0-4G-SJm" secondAttribute="leading" constant="30" id="BXQ-Fl-h8V"/>
+                            <constraint firstItem="3Ze-Mx-wN1" firstAttribute="top" secondItem="HJ7-Nv-4IW" secondAttribute="bottom" constant="40" id="E0H-Ih-PfE"/>
+                            <constraint firstItem="kRD-eh-Nvg" firstAttribute="leading" secondItem="0L0-4G-SJm" secondAttribute="leading" constant="30" id="HTc-IU-yLo"/>
+                            <constraint firstItem="SRa-C6-r9d" firstAttribute="top" secondItem="0L0-4G-SJm" secondAttribute="top" constant="60" id="O6O-cq-1BK"/>
+                            <constraint firstItem="SRa-C6-r9d" firstAttribute="leading" secondItem="HJ7-Nv-4IW" secondAttribute="trailing" constant="20" id="ZTf-gz-4li"/>
+                            <constraint firstItem="HJ7-Nv-4IW" firstAttribute="top" secondItem="NDh-Ld-Oax" secondAttribute="bottom" constant="20" id="agH-sl-uei"/>
+                            <constraint firstItem="DZy-EZ-yoY" firstAttribute="leading" secondItem="0L0-4G-SJm" secondAttribute="leading" constant="30" id="b5B-TD-G9K"/>
+                            <constraint firstItem="kRD-eh-Nvg" firstAttribute="top" secondItem="DZy-EZ-yoY" secondAttribute="bottom" constant="40" id="dle-1r-961"/>
+                            <constraint firstItem="DZy-EZ-yoY" firstAttribute="top" secondItem="3Ze-Mx-wN1" secondAttribute="bottom" constant="40" id="h2O-cc-XRK"/>
+                            <constraint firstItem="NDh-Ld-Oax" firstAttribute="leading" secondItem="0L0-4G-SJm" secondAttribute="leading" constant="30" id="oRE-0i-za1"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="Haf-wb-Eno"/>
+                    <connections>
+                        <outlet property="UsernameChangeLabel" destination="NDh-Ld-Oax" id="9v7-Yv-7Mq"/>
+                        <outlet property="UsernameChangeTextView" destination="HJ7-Nv-4IW" id="Xwk-o9-NQR"/>
+                        <outlet property="nameChangeLabel" destination="NDh-Ld-Oax" id="dAi-80-ktx"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UkH-Wj-TBh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-69.565217391304358" y="131.25"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
